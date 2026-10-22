@@ -1,0 +1,618 @@
+[
+  {
+    "sourceName": "Band belt a.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1cuw5P5-KgPDuBHtKoa-6w_IYDxb6Chup/view",
+    "asset": "/images/band-band-belt-a.webp",
+    "productSlug": "band-uniforms-band-belt"
+  },
+  {
+    "sourceName": "Band beret cap e.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1FthWucCLBB6_R8onvcEs_GrPCAQslfBB/view",
+    "asset": "/images/band-band-beret-cap-e.webp",
+    "productSlug": "band-uniforms-band-beret-cap"
+  },
+  {
+    "sourceName": "Band boot cover.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1Jv9AjcHSFp3Gmd3GLI-bFf56EoDXsjSH/view",
+    "asset": "/images/band-band-boot-cover.webp",
+    "productSlug": "band-uniforms-band-boot-cover"
+  },
+  {
+    "sourceName": "Band cap 3.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1RUor4hyN3VgGIlOqo4I-LpSvZTzyO9Z1/view",
+    "asset": "/images/band-band-cap-3.webp",
+    "productSlug": "band-uniforms-band-peak-cap"
+  },
+  {
+    "sourceName": "Band dress kit 2.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1drPk07nKCvvbxGhQFaHmvMB5R5RE0ehh/view",
+    "asset": "/images/band-band-dress-kit-2.webp",
+    "productSlug": "band-uniforms-band-dress-kit"
+  },
+  {
+    "sourceName": "Band dress kit.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1zWZaBntjaEbhcnxRKn98mvoYMTTZUHqV/view",
+    "asset": "/images/band-band-dress-kit.webp",
+    "productSlug": "band-uniforms-band-dress-kit"
+  },
+  {
+    "sourceName": "Band epplet 2.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1ZgS0G3zhlwkDbdBW9ZzVEOZNL4nfL_ts/view",
+    "asset": "/images/band-band-epplet-2.webp",
+    "productSlug": "band-uniforms-band-epaulettes"
+  },
+  {
+    "sourceName": "Band epplet 24.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1XbK1-ScXjkRjPsRCC3zUAgBV628sSb5l/view",
+    "asset": "/images/band-band-epplet-24.webp",
+    "productSlug": "band-uniforms-band-epaulettes"
+  },
+  {
+    "sourceName": "Band epplet 619.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1HTt1WBmKOSJvQRsv-YG02JTrdGivs8la/view",
+    "asset": "/images/band-band-epplet-619.webp",
+    "productSlug": "band-uniforms-band-epaulettes"
+  },
+  {
+    "sourceName": "Band epplet.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1-UIKMpmybMDZCSazcIr9t4rDBFpjHKXq/view",
+    "asset": "/images/band-band-epplet.webp",
+    "productSlug": "band-uniforms-band-epaulettes"
+  },
+  {
+    "sourceName": "Band gloves 2a.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1r-fPmrD8BnGZr3F2vLC-cQhdl37Bqceu/view",
+    "asset": "/images/band-band-gloves-2a.webp",
+    "productSlug": "band-uniforms-gloves"
+  },
+  {
+    "sourceName": "Band lenyard 2.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1IpIV-udljXn6WDZbZx-GcY8o3AKDXDMS/view",
+    "asset": "/images/band-band-lenyard-2.webp",
+    "productSlug": "band-uniforms-lanyards"
+  },
+  {
+    "sourceName": "Band peak cap.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1cHCxOnuwvRxxPzsgOligD3L9i08tOSWp/view",
+    "asset": "/images/band-band-peak-cap.webp",
+    "productSlug": "band-uniforms-band-peak-cap"
+  },
+  {
+    "sourceName": "Lenyard.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1T_QhjNLK9F3koR3B0uaod-Jk93kaI4h3/view",
+    "asset": "/images/band-lenyard.webp",
+    "productSlug": "band-uniforms-lanyards"
+  },
+  {
+    "sourceName": "Security peak cap 2.jpg",
+    "folder": "Band",
+    "sourceUrl": "https://drive.google.com/file/d/1cNlSpjiVfU35n7BvNIel1L1VBw1sl-_d/view",
+    "asset": "/images/band-security-peak-cap-2.webp",
+    "productSlug": "band-uniforms-band-peak-cap"
+  },
+  {
+    "sourceName": "Graduation cap .jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1do0V47xvnsXwjj2jpzl8YaaNTf8B63Nj/view",
+    "asset": "/images/graduation-graduation-cap.webp",
+    "productSlug": "graduation-uniform-graduation-hat"
+  },
+  {
+    "sourceName": "Graduation clock .jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1OclJvohfiWHhIcRPh-OZ3WL2TDg2hv20/view",
+    "asset": "/images/graduation-graduation-clock.webp",
+    "productSlug": "graduation-uniform-cloak"
+  },
+  {
+    "sourceName": "Graduation clock 0.jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1EPKAD6LNospG_PCRYL9JIfnGVdymXvm-/view",
+    "asset": "/images/graduation-graduation-clock-0.webp",
+    "productSlug": "graduation-uniform-cloak"
+  },
+  {
+    "sourceName": "Graduation clock o.jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1hiMKAEQdMgedk-HQpzTovzR-_ZjpzuCz/view",
+    "asset": "/images/graduation-graduation-clock-o.webp",
+    "productSlug": "graduation-uniform-cloak"
+  },
+  {
+    "sourceName": "Graduation sash 5.jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1Yy4Fskdx6fxX8xSSvEY-4ujRgzF4V4z4/view",
+    "asset": "/images/graduation-graduation-sash-5.webp",
+    "productSlug": "graduation-uniform-graduation-sash"
+  },
+  {
+    "sourceName": "Graduation sash f2.jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1Lj8U89_kqizQea_lwJ-kTo_7n0kncQCM/view",
+    "asset": "/images/graduation-graduation-sash-f2.webp",
+    "productSlug": "graduation-uniform-graduation-sash"
+  },
+  {
+    "sourceName": "Graduation scroll .jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1q4-Lrp03fRBS2mVfNNih0gx-FyWtkF8F/view",
+    "asset": "/images/graduation-graduation-scroll.webp",
+    "productSlug": "graduation-uniform-graduation-scroll"
+  },
+  {
+    "sourceName": "Graduation scroll 6.jpg",
+    "folder": "Graduation",
+    "sourceUrl": "https://drive.google.com/file/d/1YPCYgqwy3U0jt5PJjVumJkgGwaM4JD_j/view",
+    "asset": "/images/graduation-graduation-scroll-6.webp",
+    "productSlug": "graduation-uniform-graduation-scroll"
+  },
+  {
+    "sourceName": "17fe14f1c844a6011ce4fd70efaea01d.jpg",
+    "folder": "Home page",
+    "sourceUrl": "https://drive.google.com/file/d/1JZc8j3FK2HuPE1BpAh3CF2WgJTT2_4Fv/view",
+    "asset": "/images/home-page-17fe14f1c844a6011ce4fd70efaea01d.webp",
+    "productSlug": null
+  },
+  {
+    "sourceName": "3282e0a5ee12cd7cc8a0f0a4eed1d387.jpg",
+    "folder": "Home page",
+    "sourceUrl": "https://drive.google.com/file/d/16hlsCuq6N764AUAs62JBKSXkV9V5n0m3/view",
+    "asset": "/images/home-page-3282e0a5ee12cd7cc8a0f0a4eed1d387.webp",
+    "productSlug": null
+  },
+  {
+    "sourceName": "8673e016f6778e11b0cd77597895e61c.jpg",
+    "folder": "Home page",
+    "sourceUrl": "https://drive.google.com/file/d/1WvojAPqnWcu3bVxiQBfT93hukyxqYNax/view",
+    "asset": "/images/home-page-8673e016f6778e11b0cd77597895e61c.webp",
+    "productSlug": null
+  },
+  {
+    "sourceName": "da0d2df422f641e91bcd37ae7485ea5e.jpg",
+    "folder": "Home page",
+    "sourceUrl": "https://drive.google.com/file/d/1EBO-EfAXFHQB4VfCibPXJn5wj2QAfj1h/view",
+    "asset": "/images/home-page-da0d2df422f641e91bcd37ae7485ea5e.webp",
+    "productSlug": null
+  },
+  {
+    "sourceName": "Hospital bedsheet 2.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1lE8H3Dl6os9NUSjr5YXPIlcb6PZN4GbQ/view",
+    "asset": "/images/hospital-hospital-bedsheet-2.webp",
+    "productSlug": "hospital-uniforms-hospital-bed-sheet-pillow-case-and-pillow"
+  },
+  {
+    "sourceName": "Hospital towel .jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1iySd83W4qQUvBg9tBoeigoqqoQaOFRIB/view",
+    "asset": "/images/hospital-hospital-towel.webp",
+    "productSlug": "hospital-uniforms-hospital-towel"
+  },
+  {
+    "sourceName": "Hospitalbed sheet.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1MBwJVIA8os3sRlvBBKxC326k-yxszVcv/view",
+    "asset": "/images/hospital-hospitalbed-sheet.webp",
+    "productSlug": "hospital-uniforms-hospital-bed-sheet-pillow-case-and-pillow"
+  },
+  {
+    "sourceName": "Lab coat.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1ZuYqaczxo6KgYb2dr_0JKb5EVG6JHPV1/view",
+    "asset": "/images/hospital-lab-coat.webp",
+    "productSlug": "hospital-uniforms-lab-coat"
+  },
+  {
+    "sourceName": "Nurse kit and cap.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1qXn03qV0fk30EWIH4Uiq2rzJ7ynZsW4L/view",
+    "asset": "/images/hospital-nurse-kit-and-cap.webp",
+    "productSlug": "hospital-uniforms-nurse-kit-and-cap"
+  },
+  {
+    "sourceName": "Nurse kit.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1RAg2L5Bo3jZ7GRoPUTiKLtkYw3O9ozet/view",
+    "asset": "/images/hospital-nurse-kit.webp",
+    "productSlug": "hospital-uniforms-nurse-kit-and-cap"
+  },
+  {
+    "sourceName": "Rexine 2.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1W_Ey7Dy208eHebJCcRk8hgzKfXY_ycR7/view",
+    "asset": "/images/hospital-rexine-2.webp",
+    "productSlug": "hospital-uniforms-rexine-and-mackintosh"
+  },
+  {
+    "sourceName": "Rexine.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1zG3DXjE20FcBT1GqOuZ2Gk-rpe2FgMce/view",
+    "asset": "/images/hospital-rexine.webp",
+    "productSlug": "hospital-uniforms-rexine-and-mackintosh"
+  },
+  {
+    "sourceName": "Scrub all colour.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1ZDOjXpdjHQ8JoAEJr4UiJOlraq4EXeWz/view",
+    "asset": "/images/hospital-scrub-all-colour.webp",
+    "productSlug": "hospital-uniforms-scrubs"
+  },
+  {
+    "sourceName": "Scrub kit blue.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1gJ7rksVav-J0XBWfFgU039ZuiibSvCDI/view",
+    "asset": "/images/hospital-scrub-kit-blue.webp",
+    "productSlug": "hospital-uniforms-scrubs"
+  },
+  {
+    "sourceName": "Scrub kit L blue.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1chE5_RxY5XLqzXbWaVyh4o2pzux0iEZv/view",
+    "asset": "/images/hospital-scrub-kit-l-blue.webp",
+    "productSlug": "hospital-uniforms-scrubs"
+  },
+  {
+    "sourceName": "Scrub kit.jpg",
+    "folder": "Hospital",
+    "sourceUrl": "https://drive.google.com/file/d/1cQLnPRRQTB22ABGHt-zleh2MyEG-KNiR/view",
+    "asset": "/images/hospital-scrub-kit.webp",
+    "productSlug": "hospital-uniforms-scrubs"
+  },
+  {
+    "sourceName": "3d47290d6e6a72cdddacc6998aabcdd6.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1OPcF2GFYCofuC3wbdVEuHl9gKcNhMfRY/view",
+    "asset": "/images/hotel-3d47290d6e6a72cdddacc6998aabcdd6.webp",
+    "productSlug": "hotel-uniforms-chef-trouser"
+  },
+  {
+    "sourceName": "3e6c6f99775ae58a60973e809694a145.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1YnBDVkoGntVgPDTrje_BlgQ3rFbM_YPe/view",
+    "asset": "/images/hotel-3e6c6f99775ae58a60973e809694a145.webp",
+    "productSlug": "hotel-uniforms-aprons"
+  },
+  {
+    "sourceName": "73b4b875d4821475a4e85bdc8d861290.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1z9McfCf_VyWF6SzO9MjhvVGiXj6wDM9L/view",
+    "asset": "/images/hotel-73b4b875d4821475a4e85bdc8d861290.webp",
+    "productSlug": "hotel-uniforms-caps"
+  },
+  {
+    "sourceName": "Apron half.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1_pQCq2lTDEprrO1ZlupRHdKDXX5K3-RW/view",
+    "asset": "/images/hotel-apron-half.webp",
+    "productSlug": "hotel-uniforms-aprons"
+  },
+  {
+    "sourceName": "Apron.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1bqRMy92LjXQbPFdWk--VrbD15sU8qlnc/view",
+    "asset": "/images/hotel-apron.webp",
+    "productSlug": "hotel-uniforms-aprons"
+  },
+  {
+    "sourceName": "Bow 3.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1aR3rhEZKAkPzrHtJsVHpJeyo2yCjNLTy/view",
+    "asset": "/images/hotel-bow-3.webp",
+    "productSlug": "hotel-uniforms-neck-tie-and-bow"
+  },
+  {
+    "sourceName": "Bow red.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1HTgiWZaqFfTmjF5hkZ5fnmDNcUb4SCdg/view",
+    "asset": "/images/hotel-bow-red.webp",
+    "productSlug": "hotel-uniforms-neck-tie-and-bow"
+  },
+  {
+    "sourceName": "Bow.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1RWMWl6887gffejKgARO7WcQN1MClcHcw/view",
+    "asset": "/images/hotel-bow.webp",
+    "productSlug": "hotel-uniforms-neck-tie-and-bow"
+  },
+  {
+    "sourceName": "Chef Apron.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1CCRKFabQL1RnqdIvf2lJ_apT-HRUVQe0/view",
+    "asset": "/images/hotel-chef-apron.webp",
+    "productSlug": "hotel-uniforms-aprons"
+  },
+  {
+    "sourceName": "Chef cap  e.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1FigBY0hBD8G_DEBpB7p40pP81cMY2BF2/view",
+    "asset": "/images/hotel-chef-cap-e.webp",
+    "productSlug": "hotel-uniforms-caps"
+  },
+  {
+    "sourceName": "Chef coat 2.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1UobbTgBHtmEPR4yNCd5spOKzG40dRzUg/view",
+    "asset": "/images/hotel-chef-coat-2.webp",
+    "productSlug": "hotel-uniforms-chef-coat"
+  },
+  {
+    "sourceName": "Chef coat 2c.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/17vfuHyO7pNI3dAnXUM266URo1h4DzQae/view",
+    "asset": "/images/hotel-chef-coat-2c.webp",
+    "productSlug": "hotel-uniforms-chef-coat"
+  },
+  {
+    "sourceName": "Chef coat.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1mhZ8rOPoq6zKuNQgBfaoTOwbFudlykmo/view",
+    "asset": "/images/hotel-chef-coat.webp",
+    "productSlug": "hotel-uniforms-chef-coat"
+  },
+  {
+    "sourceName": "Chef hat.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1WDZPAlrs4dJ5bq3DQvzAbyOJmE1Uu8Uk/view",
+    "asset": "/images/hotel-chef-hat.webp",
+    "productSlug": "hotel-uniforms-caps"
+  },
+  {
+    "sourceName": "Chef Trouser .jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1t_dYqvii3_YJX3enttBoayVrsqJfQXWs/view",
+    "asset": "/images/hotel-chef-trouser.webp",
+    "productSlug": "hotel-uniforms-chef-trouser"
+  },
+  {
+    "sourceName": "Napkin colour .jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/14zdF-rbFpk4_Fb9X29pIqGHp8Fmy6WZj/view",
+    "asset": "/images/hotel-napkin-colour.webp",
+    "productSlug": "hotel-uniforms-napkins"
+  },
+  {
+    "sourceName": "Napkin.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/11Cf8AfC4CGNEnznREIi7ner54wTXCNGE/view",
+    "asset": "/images/hotel-napkin.webp",
+    "productSlug": "hotel-uniforms-napkins"
+  },
+  {
+    "sourceName": "Napkin2.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1sGRWmRD0pqevLl4RQ8QgusF7rIGtVnyv/view",
+    "asset": "/images/hotel-napkin2.webp",
+    "productSlug": "hotel-uniforms-napkins"
+  },
+  {
+    "sourceName": "Waiter kit  23.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1v6wSzIFZB4TaxvIAc3k4fnecghYr-dT5/view",
+    "asset": "/images/hotel-waiter-kit-23.webp",
+    "productSlug": "hotel-uniforms-waiters-kit"
+  },
+  {
+    "sourceName": "Waiter kit gray.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1JDU1ZTd0bpFhgFUQOb9z4jfOOeNvkzmv/view",
+    "asset": "/images/hotel-waiter-kit-gray.webp",
+    "productSlug": "hotel-uniforms-waiters-kit"
+  },
+  {
+    "sourceName": "Waiter kit with half apron.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1JrCltCPqFcwCAibEsAjvghnB-wmCioxV/view",
+    "asset": "/images/hotel-waiter-kit-with-half-apron.webp",
+    "productSlug": "hotel-uniforms-aprons"
+  },
+  {
+    "sourceName": "Waiter kit.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/18viZiRjVnVP0_34Tj2Dr-fmYu_8a9S_S/view",
+    "asset": "/images/hotel-waiter-kit.webp",
+    "productSlug": "hotel-uniforms-waiters-kit"
+  },
+  {
+    "sourceName": "Waiter kits.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1E_poYsWVCLbfQDyJJUyNWjGwwDqQSrwz/view",
+    "asset": "/images/hotel-waiter-kits.webp",
+    "productSlug": "hotel-uniforms-waiters-kit"
+  },
+  {
+    "sourceName": "Waiter kiy gold.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1yH7nfm37sAaFpJye9lg2ZeqiV60DgJME/view",
+    "asset": "/images/hotel-waiter-kiy-gold.webp",
+    "productSlug": "hotel-uniforms-waiters-kit"
+  },
+  {
+    "sourceName": "Water proof apron.jpg",
+    "folder": "Hotel",
+    "sourceUrl": "https://drive.google.com/file/d/1WLoJ3V2HdJoBHLT_es_3WgPr9qrljEK9/view",
+    "asset": "/images/hotel-water-proof-apron.webp",
+    "productSlug": "hotel-uniforms-aprons"
+  },
+  {
+    "sourceName": "Kids lab coat.jpg",
+    "folder": "Kids Costume",
+    "sourceUrl": "https://drive.google.com/file/d/1QJ4o9JwD_w5ms9N7_aKYQ0zkwQw4Bx6N/view",
+    "asset": "/images/kids-costume-kids-lab-coat.webp",
+    "productSlug": "kids-costume-kits-doctor-kit"
+  },
+  {
+    "sourceName": "Kids lawyer coat.jpg",
+    "folder": "Kids Costume",
+    "sourceUrl": "https://drive.google.com/file/d/1Rkbh5Yyeb0jQEc2O0ZcUIw2UprP5_CII/view",
+    "asset": "/images/kids-costume-kids-lawyer-coat.webp",
+    "productSlug": "kids-costume-kits-lawyer-kit"
+  },
+  {
+    "sourceName": "Kids pilot kit.jpg",
+    "folder": "Kids Costume",
+    "sourceUrl": "https://drive.google.com/file/d/1Dg7XqeDi60YOezlef2KY-U2IIwWWoTF2/view",
+    "asset": "/images/kids-costume-kids-pilot-kit.webp",
+    "productSlug": "kids-costume-kits-pilot-kit"
+  },
+  {
+    "sourceName": "Gum boot black 2.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1qnnBoruUx541L41GrsplOnfEED-qGFTR/view",
+    "asset": "/images/maintenance-staff-gum-boot-black-2.webp",
+    "productSlug": "maintenance-staff-uniforms-gum-boots"
+  },
+  {
+    "sourceName": "Gum boots yellow.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1xDcTP0-jGZjmo9ezB_S2FC1nO0STlJ1K/view",
+    "asset": "/images/maintenance-staff-gum-boots-yellow.webp",
+    "productSlug": "maintenance-staff-uniforms-gum-boots"
+  },
+  {
+    "sourceName": "Gumboot black.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1ueZYUL-WOWzq5GccTAT_AWULmcn1z9Hs/view",
+    "asset": "/images/maintenance-staff-gumboot-black.webp",
+    "productSlug": "maintenance-staff-uniforms-gum-boots"
+  },
+  {
+    "sourceName": "Overall kit 3.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1XEUP_ejPGW8b-bLZdqiZxjDcQ365ph4Z/view",
+    "asset": "/images/maintenance-staff-overall-kit-3.webp",
+    "productSlug": "maintenance-staff-uniforms-overall-kit"
+  },
+  {
+    "sourceName": "Overall kit 5.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1r74BLONEVaWccC_kOwDciHGsdX6B3JH5/view",
+    "asset": "/images/maintenance-staff-overall-kit-5.webp",
+    "productSlug": "maintenance-staff-uniforms-overall-kit"
+  },
+  {
+    "sourceName": "Overall kit c.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1Y0YRDYLjQwowQn65HGp8r_-chUGl9csJ/view",
+    "asset": "/images/maintenance-staff-overall-kit-c.webp",
+    "productSlug": "maintenance-staff-uniforms-overall-kit"
+  },
+  {
+    "sourceName": "Safety helmet 7.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1rJpjXyDVy5lflInYwPfG6mkoVo_MsajJ/view",
+    "asset": "/images/maintenance-staff-safety-helmet-7.webp",
+    "productSlug": "maintenance-staff-uniforms-helmet"
+  },
+  {
+    "sourceName": "Safety jacket 3.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1L6vAjk7C0tq1mIwK5-PXmdsVIJup-iJf/view",
+    "asset": "/images/maintenance-staff-safety-jacket-3.webp",
+    "productSlug": "maintenance-staff-uniforms-jackets"
+  },
+  {
+    "sourceName": "Safety jacket 4.jpg",
+    "folder": "Maintenance staff",
+    "sourceUrl": "https://drive.google.com/file/d/1fenmvKATs1JNiu1D9-6UkCoPnXgKtiS7/view",
+    "asset": "/images/maintenance-staff-safety-jacket-4.webp",
+    "productSlug": "maintenance-staff-uniforms-jackets"
+  },
+  {
+    "sourceName": "Promotion cap 5.jpg",
+    "folder": "Promotion items",
+    "sourceUrl": "https://drive.google.com/file/d/1y6ymUd4Slr9WrwhvebnO_eSasRnJZbe5/view",
+    "asset": "/images/promotion-items-promotion-cap-5.webp",
+    "productSlug": "promotion-uniform-cap"
+  },
+  {
+    "sourceName": "Promotion t shirt 4.jpg",
+    "folder": "Promotion items",
+    "sourceUrl": "https://drive.google.com/file/d/1a0-9F64KafqsqpnGB-WO7Bc2xPcp2xXE/view",
+    "asset": "/images/promotion-items-promotion-t-shirt-4.webp",
+    "productSlug": "promotion-uniform-t-shirt"
+  },
+  {
+    "sourceName": "Security belt.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1Iv1lbqBBBGRKg-4L4KyLSnsDnyVYCgfY/view",
+    "asset": "/images/security-security-belt.webp",
+    "productSlug": "security-uniforms-belt"
+  },
+  {
+    "sourceName": "Security beret cap.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1Nz6IZO784o3yJPSiweQHKn2kQf3lBqmy/view",
+    "asset": "/images/security-security-beret-cap.webp",
+    "productSlug": "security-uniforms-beret-cap"
+  },
+  {
+    "sourceName": "Security epplet .jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1HRdRNW1imQykiIYc7V6Gi8iZ7-31CsJB/view",
+    "asset": "/images/security-security-epplet.webp",
+    "productSlug": "security-uniforms-epaulettes"
+  },
+  {
+    "sourceName": "Security epplet 2.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1aWVkQdwnBC53lzOQrfCjZo5sSsC-P85z/view",
+    "asset": "/images/security-security-epplet-2.webp",
+    "productSlug": "security-uniforms-epaulettes"
+  },
+  {
+    "sourceName": "Security peak cap.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1SWbssOS9vRDzbRFyi8rwNpppbsWToSxN/view",
+    "asset": "/images/security-security-peak-cap.webp",
+    "productSlug": "security-uniforms-peak-cap"
+  },
+  {
+    "sourceName": "Security shirt 2.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1H1GNcLuXX2Vt_qz8emaCihrpfHNpj51H/view",
+    "asset": "/images/security-security-shirt-2.webp",
+    "productSlug": "security-uniforms-security-shirt"
+  },
+  {
+    "sourceName": "Security shirt.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1ZYS61IXWbyGMwn9wudRBi3yJ2-_bsuA-/view",
+    "asset": "/images/security-security-shirt.webp",
+    "productSlug": "security-uniforms-security-shirt"
+  },
+  {
+    "sourceName": "Security trouser .jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1f-jcuJ2nBsVqo6rBlwyVtbpOgGbzaRbu/view",
+    "asset": "/images/security-security-trouser.webp",
+    "productSlug": "security-uniforms-security-trouser"
+  },
+  {
+    "sourceName": "Security trouser 2.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/1yLd3bM0kC9dYhmvygEiG4IMuzeAp2122/view",
+    "asset": "/images/security-security-trouser-2.webp",
+    "productSlug": "security-uniforms-security-trouser"
+  },
+  {
+    "sourceName": "Security whistle.jpg",
+    "folder": "Security",
+    "sourceUrl": "https://drive.google.com/file/d/13LstaZFfv_7Ls-F-R5amzzlK2wQ4At0g/view",
+    "asset": "/images/security-security-whistle.webp",
+    "productSlug": "security-uniforms-whistle"
+  }
+]

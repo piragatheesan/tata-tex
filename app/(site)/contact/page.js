@@ -1,22 +1,39 @@
 import EnquiryForm from '@/components/EnquiryForm';
 import { site } from '@/lib/site';
-
-export const metadata = { title: 'Contact Us' };
-
+export const metadata = { title: 'Contact us' };
 export default async function Contact({ searchParams }) {
-  const sp = await searchParams;
-  const defaultType = sp.type === 'quote' ? 'Wholesale quotation' : 'General enquiry';
+  const parameters = await searchParams;
+  const defaultType = parameters.type === 'quote' ? 'Wholesale quotation' : 'General enquiry';
+  const details = [
+    ['Visit us', site.address],
+    ['Call us', site.phone],
+    ['Email us', site.email],
+    ['Opening hours', site.hours],
+  ].filter(([, value]) => value && !value.startsWith('['));
   return (
-    <div className="w sec">
-      <h1>Contact us</h1>
-      <div className="pd">
-        <div>
-          <p><b>Address</b><br />{site.address}</p>
-          <p><b>Telephone</b><br />{site.phone}</p>
-          <p><b>Email</b><br />{site.email}</p>
-          <p><b>Opening hours</b><br />{site.hours}</p>
-        </div>
-        <div><EnquiryForm defaultType={defaultType} /></div>
+    <div className="container section">
+      <div className="page-intro">
+        <h1>Get in Touch</h1>
+        <p>Tell us what you need. We’ll help you find the right uniforms.</p>
+      </div>
+      <div className="contact-grid">
+        <aside className="contact-details">
+          <h2>Ordering for a team?</h2>
+          <p>
+            Include your preferred products, sizes and quantities so we can understand your order.
+          </p>
+          {details.map(([label, value]) => (
+            <div key={label}>
+              <h3>{label}</h3>
+              <p>{value}</p>
+            </div>
+          ))}
+        </aside>
+        <section className="enquiry-panel">
+          <h2>Send an enquiry</h2>
+          <p className="muted">Fields marked * are required.</p>
+          <EnquiryForm key={defaultType} defaultType={defaultType} />
+        </section>
       </div>
     </div>
   );

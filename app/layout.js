@@ -1,4 +1,5 @@
 import './globals.css';
+import LoadingScreen from '@/components/LoadingScreen';
 
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 
@@ -8,10 +9,15 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
-        <noscript><style>{'.sp{display:none}'}</style></noscript>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body>{children}</body>
+      <body>
+        <LoadingScreen />
+        {children}
+      </body>
     </html>
   );
 }

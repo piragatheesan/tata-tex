@@ -5,19 +5,28 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --experimental-vm-modules --test tests/*.test.mjs",
+    "setup:admin": "node scripts/setup-admin.mjs",
+    "seed:supabase": "node scripts/seed-supabase.mjs",
+    "migrate:sqlite": "node scripts/import-sqlite.mjs"
   },
   "dependencies": {
-    "better-sqlite3": "^12.4.1",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.3",
     "next": "^16.4.0",
     "nodemailer": "^10.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "server-only": "^0.0.1"
   },
   "engines": {
     "node": ">=20.9.0"
   },
-  "allowScripts": {
-    "better-sqlite3": true
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.9",
+    "prettier": "^3.9.10"
   }
 }

@@ -6,7 +6,11 @@ function Field({ label, error, children }) {
     <label>
       {label}
       {children}
-      {error ? <span className="er" role="alert">{error}</span> : null}
+      {error ? (
+        <span className="field-error" role="alert">
+          {error}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -14,9 +18,12 @@ function Field({ label, error, children }) {
 export default function EnquiryForm({ product, defaultType = 'General enquiry' }) {
   const [status, setStatus] = useState('idle'); // idle | sending | done | error
   const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState('');
 
   async function onSubmit(e) {
     e.preventDefault();
+    if (status === 'sending') return;
+    setServerError('');
     const d = Object.fromEntries(new FormData(e.currentTarget));
     const x = {};
     if (!d.name.trim()) x.name = 'Please enter your name.';
@@ -40,15 +47,28 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
           hp: d.hp,
         }),
       });
-      if (!r.ok) throw new Error('failed');
+      const result = await r.json();
+      if (!r.ok) throw new Error(result.error || 'Please try again.');
       setStatus('done');
-    } catch {
+    } catch (error) {
+      setServerError(
+        error.message === 'Failed to fetch'
+          ? 'Connection failed. Please try again.'
+          : error.message,
+      );
       setStatus('error');
     }
   }
 
   if (status === 'done') {
-    return <div className="note"><p>Thank you. Your enquiry has been received and Tata Tex will respond using the contact details you provided.</p></div>;
+    return (
+      <div className="note" role="status">
+        <p>
+          Thank you. Your enquiry has been received and Tata Tex will respond using the contact
+          details you provided.
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -60,19 +80,58 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
           <option>Wholesale quotation</option>
         </select>
       </Field>
-      <Field label="Your name *" error={errors.name}><input name="name" autoComplete="name" /></Field>
-      <Field label="Email or phone *" error={errors.contact}><input name="contact" autoComplete="email" /></Field>
-      <Field label="Company (optional)"><input name="company" autoComplete="organization" /></Field>
-      <div className="two">
-        <Field label="Quantity"><input name="qty" type="number" min="0" /></Field>
+      <Field label="Your name *" error={errors.name}>
+        <input
+          name="name"
+          required
+          maxLength={100}
+          aria-invalid={Boolean(errors.name)}
+          autoComplete="name"
+        />
+      </Field>
+      <Field label="Email or phone *" error={errors.contact}>
+        <input
+          name="contact"
+          required
+          maxLength={120}
+          aria-invalid={Boolean(errors.contact)}
+          autoComplete="email"
+        />
+      </Field>
+      <Field label="Company (optional)">
+        <input name="company" autoComplete="organization" />
+      </Field>
+      <div className="two-columns">
+        <Field label="Quantity">
+          <input name="qty" type="number" min="0" />
+        </Field>
         <Field label="Unit">
-          <select name="unit"><option>pieces</option><option>sets</option><option>metres</option><option>packs</option></select>
+          <select name="unit">
+            <option>pieces</option>
+            <option>sets</option>
+            <option>metres</option>
+            <option>packs</option>
+          </select>
         </Field>
       </div>
-      <Field label="Message *" error={errors.message}><textarea name="message" rows="4" /></Field>
-      <input name="hp" className="hp" tabIndex="-1" autoComplete="off" aria-hidden="true" />
-      {status === 'error' ? <p className="er" role="alert">Sorry, we could not send your enquiry. Please try again or contact us by phone.</p> : null}
-      <button className="btn" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send enquiry'}</button>
+      <Field label="Message *" error={errors.message}>
+        <textarea
+          name="message"
+          required
+          maxLength={2000}
+          aria-invalid={Boolean(errors.message)}
+          rows="4"
+        />
+      </Field>
+      <input name="hp" className="honeypot" tabIndex="-1" autoComplete="off" aria-hidden="true" />
+      {status === 'error' ? (
+        <p className="field-error" role="alert">
+          {serverError}
+        </p>
+      ) : null}
+      <button className="btn" type="submit" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : 'Send enquiry'}
+      </button>
     </form>
   );
 }

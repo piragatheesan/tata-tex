@@ -1,68 +1,65 @@
-# Tata Tex website (Next.js + admin dashboard)
+# Tata Tex — Supabase edition
 
-Catalogue and enquiry website built with Next.js (Node.js) and React, with a staff admin dashboard and a SQLite database. No cart or payments.
+A Next.js/React catalogue and enquiry website with Supabase PostgreSQL, Supabase Auth staff login, and Supabase Storage for new product pictures. The responsive design, 88 bundled photos and existing public/admin features are retained.
 
-## What it includes
-**Public site:** home (building-photo hero), products (8 categories, search, product pages), About Us, Contact, enquiry forms (product enquiry, wholesale quotation, general), white-glass animated logo loading screen (click to skip), skeleton loading on product lists.
+**Start with `docs/SUPABASE_SETUP.md`.** It walks through project keys, SQL setup, initial catalogue or SQLite import, first administrator, and deployment.
 
-**Admin dashboard (`/admin`):**
-- Login with username and password (sessions in a signed, HTTP-only cookie, 8 hours; 5 failed logins per address blocks login for 15 minutes).
-- Dashboard: counts and latest enquiries.
-- Products: add, edit, delete, search; code, category, description, specifications, price display (Contact for Price / Request a Wholesale Quotation / show the price), availability, photo upload (JPG, PNG or WebP up to 3 MB), published on/off.
-- Categories: add, rename, reorder, hide, delete (only when empty).
-- Enquiries: filter by status (New, In Progress, Awaiting Customer, Responded, Closed), internal notes, download as CSV, delete (administrators).
-- Users: administrators add and delete staff or administrator accounts; everyone can change their own password.
-- Roles: **administrator** (everything, including users) and **staff** (products, categories, enquiries).
+## Quick sequence
 
-Enquiries from the website are saved in the database and emailed to the business (Nodemailer, SMTP).
+1. Create a Supabase project.
+2. Configure `.env.local` using `.env.example`.
+3. Run `supabase/schema.sql` in the Supabase SQL Editor.
+4. Run `npm ci`, then either `npm run seed:supabase` or the SQLite import instructions.
+5. Run `npm run setup:admin`.
+6. Run `npm run dev` and visit `http://localhost:3000`.
 
-## Database choice: SQLite
-The data is small (about 50 products, low write volume) and runs on one server, so SQLite (via `better-sqlite3`, WAL mode) fits: nothing extra to install or pay for, and a backup is a file copy. Move to PostgreSQL later if you need several servers writing at once, serverless hosting, or a managed database. Migrating is mostly mechanical because the tables are plain SQL (`lib/db.js`).
+Admin login: `http://localhost:3000/admin`, using the new Supabase **email/password** account.
 
-## Requirements
-Node.js 20.9 or newer (22 LTS recommended; 24 also works). The database library (`better-sqlite3` 12) ships ready-made Windows, macOS and Linux binaries for Node 20, 22 and 24, so no compiler is needed.
+## Useful commands
 
-## About npm warnings
-- **"allow-scripts ... better-sqlite3"**: newer npm versions list packages that run install scripts. `package.json` already approves `better-sqlite3` (it needs its install script to fetch its database binary), so this is only information. To check the database library works, run `node -e "new (require('better-sqlite3'))(':memory:'); console.log('database library OK')"`.
-- **`npm audit`**: this version uses Next.js 16, React 19 and a current Nodemailer, and reports 0 known vulnerabilities at the time it was built. Run `npm audit` again before going live and keep packages updated (`npm update`).
-
-## If `npm install` fails
-- **"No prebuilt binaries found" / "Could not find any Visual Studio installation"**: you are on a Node version without a ready-made binary (very new or very old). Install Node 22 LTS from nodejs.org, then delete the `node_modules` folder, and run `npm install` again.
-- **"EPERM: operation not permitted, rmdir ..." warnings**: Windows or antivirus is locking files. Close VS Code and other terminals, delete the `node_modules` folder, pause real-time antivirus for the project folder (or add it as an exclusion), keep the project outside OneDrive, and run `npm install` again.
-
-## Run it
-```
-npm install
-cp .env.example .env.local     # then edit .env.local (Windows: copy the file and rename it)
-npm run dev                     # http://localhost:3000   (admin: http://localhost:3000/admin)
-```
-In `.env.local` set `ADMIN_USERNAME` and `ADMIN_PASSWORD` (creates the first administrator the first time the site starts) and `SESSION_SECRET` (a long random string, for example from `openssl rand -hex 32`). After the first start you can remove `ADMIN_PASSWORD` from the file.
-
-Production:
-```
+```powershell
+npm ci
+npm run seed:supabase
+npm run setup:admin
+npm run dev
+npm test
+npm run format:check
 npm run build
-npm start                       # port 3000 (set PORT to change)
 ```
-Login cookies are HTTPS-only in production. Put the site behind HTTPS (Nginx, Caddy or your host). If you run production mode over plain http on a private network, set `COOKIE_SECURE=false`.
 
-## Email setup (Gmail example)
-Turn on 2-step verification, create an App Password, then set `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, `SMTP_USER` and `MAIL_FROM` (that account), `SMTP_PASS` (the app password) and `MAIL_TO` (where enquiries should arrive). With `SMTP_HOST` empty, emails are only printed in the server log. Enquiries are saved even if the email fails.
+Do not seed an existing populated catalogue. The import and seed functions require empty catalogue/enquiry tables and refuse to overwrite your existing records.
 
-## Where to edit
-- Admin dashboard: products, categories, photos, prices, enquiries, users.
-- `lib/site.js`: phone, email, address, opening hours (still `[PHONE]`, `[EMAIL]`, `[ADDRESS]`, `[HOURS]`).
-- `app/(site)/about/page.js`: About Us text. `app/(site)/page.js`: home page. `app/globals.css`: styling.
-- `public/logo.png`, `public/hero.jpg`: logo and hero photo.
-- `lib/seed.js`: the starting catalogue, loaded only the first time (when the database is empty).
+## Code map
 
-## Data and backups
-Everything is in the `data/` folder: `tatatex.db` (database) and `uploads/` (product photos). Back it up regularly. For a safe copy while the site is running: `sqlite3 data/tatatex.db ".backup 'backup.db'"`, then copy `backup.db` and `data/uploads/`.
+| Edit                                                       | Location                                                                 |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Home/About/Contact text and layouts                        | `app/(site)`                                                             |
+| Design tokens, component styles and breakpoints            | `app/globals.css`                                                        |
+| Approved business details                                  | `lib/site.js`                                                            |
+| Search/filter behaviour                                    | `components/ProductBrowser.js`, `lib/catalogue.mjs`                      |
+| Bundled photos and galleries                               | `lib/product-images.js`, `public/images`, `components/ProductGallery.js` |
+| Server-only Supabase clients                               | `lib/supabase/admin.js`, `lib/supabase/server.js`                        |
+| Database reads and public-price sanitization               | `lib/queries.js`                                                         |
+| Staff changes, Supabase Auth login and user administration | `lib/actions.js`, `lib/auth.js`                                          |
+| Remote picture uploads and cleanup                         | `lib/storage.js`                                                         |
+| Auth-cookie refresh                                        | `proxy.js`                                                               |
+| PostgreSQL schema and permissions                          | `supabase/schema.sql`                                                    |
+| First administrator, seed and migration                    | `scripts`                                                                |
 
-## Deploy
-Use a server with Node.js and a writable disk (a VPS, or a Node host with persistent storage). Serverless hosts such as Vercel do not keep the database file or uploads. Run it with `pm2` (or a systemd service) behind Nginx or Caddy with HTTPS. Keep `.env.local` private.
+## Data and pictures
 
-## Security notes
-Passwords are hashed with scrypt; admin pages and every admin action check the login on the server; uploads are checked for type, size and file signature; CSV export neutralises spreadsheet formulas; enquiry forms have a spam trap and a per-address limit (kept in memory, per server process).
+The website no longer uses `data/tatatex.db`. Products, categories, enquiries and staff profiles are in Supabase. Passwords/sessions are handled by Supabase Auth.
 
-## Not included yet
-Multiple photos per product, drag-and-drop ordering, password reset by email, audit log, Sinhala/Tamil versions, sitemap and analytics. Product codes (TT-001...) were auto-numbered at the start; change them in the dashboard.
+The 88 supplied photos remain in `public/images`, with mapping in `lib/product-images.js`. Admin-added photos go to the `product-images` Storage bucket. Uploaded photos override the bundled primary picture. The dashboard supports one uploaded photo per product; bundled galleries retain multiple pictures.
+
+Public visitors browse products and send enquiries. There is no cart or payment processing. Enquiries are saved remotely; SMTP notifications are optional. The private server key is never included in a client component.
+
+## Checks and limits
+
+Tests cover product rendering, filtering, image mapping, rate limiting, Supabase query visibility/access checks, failed-save image cleanup and real PostgreSQL schema/permission/import behaviour in an isolated PGlite engine. Live Supabase Auth/Storage and browser checks require configuring your project first.
+
+The application was built with Node.js 24.19.0. Tests use VM modules and may print a Node experimental warning. PGlite is a development-only test dependency; it is not the website database.
+
+`lib/site.js` still needs approved contact details. Existing business-history claims were retained from the supplied source. Keep your old SQLite database and uploads until the migration has been verified.
+
+See `docs/SUPABASE_SETUP.md` and `docs/CODE_REVIEW.md` for setup and validation details. No live project was connected, data migrated remotely, deployment made, or repository pushed during preparation.

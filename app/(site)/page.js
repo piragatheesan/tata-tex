@@ -1,77 +1,120 @@
 import Link from 'next/link';
 import { getCategories, getProducts } from '@/lib/queries';
 import { swatch } from '@/lib/ui';
+import { categoryImages, homeImages } from '@/lib/product-images';
 import ProductCard from '@/components/ProductCard';
-
 export const dynamic = 'force-dynamic';
-
-export default function Home() {
-  const categories = getCategories();
-  const all = getProducts();
-  const step = Math.max(1, Math.floor(all.length / 4));
-  const popular = all.filter((_, i) => i % step === 0).slice(0, 4);
-  const featured = categories[0];
+export default async function Home() {
+  const [categories, products] = await Promise.all([getCategories(), getProducts()]);
+  const featured = categories
+    .map((category) => products.find((product) => product.category_slug === category.slug))
+    .filter(Boolean)
+    .slice(0, 3);
   return (
     <>
-      <section className="vh">
-        <div className="w vh-in">
-          <div>
-            <h1 className="hh">Uniforms <em>since</em> 1983.</h1>
-            <p className="vh-p">Ready-made and custom uniforms and accessories for schools, businesses, industries and institutions. Retail and wholesale.</p>
-            <Link className="pill" href="/products"><span>Explore Products</span><i aria-hidden="true">↗</i></Link>
-            <div className="vh-row">
-              {featured ? (
-                <Link className="vh-card" href={`/products?category=${featured.slug}`}>
-                  <div className="vh-sw" style={{ background: swatch(featured.id) }} />
-                  <b>{featured.name}</b><span>{featured.count} items</span>
-                </Link>
-              ) : null}
-              <Link className="badge" href="/contact?type=quote" aria-label="Request a wholesale quotation">
-                <svg viewBox="0 0 120 120" aria-hidden="true">
-                  <defs><path id="cp" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0" /></defs>
-                  <g className="rot"><text fontSize="9.5" fontWeight="700" letterSpacing="1.6" fill="#232A6B"><textPath href="#cp">REQUEST A QUOTE · WHOLESALE · REQUEST A QUOTE · WHOLESALE ·</textPath></text></g>
-                  <circle cx="60" cy="60" r="29" fill="#232A6B" />
-                  <text x="60" y="58" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff">Quote</text>
-                  <text x="60" y="76" textAnchor="middle" fontSize="15" fill="#fff">↗</text>
-                </svg>
-              </Link>
-            </div>
+      <section className="home-hero container">
+        <div className="hero-copy">
+          <h1>
+            Uniforms for
+            <br />
+            Every Role.
+          </h1>
+          <p className="hero-description">Quality uniforms for schools, workplaces and teams.</p>
+          <div className="button-row">
+            <Link className="btn" href="/products">
+              Browse Products
+            </Link>
+            <Link className="btn-outline" href="/contact?type=quote">
+              Get a Quote
+            </Link>
           </div>
-          <div className="vh-r"><img src="/hero.jpg" alt="Photograph of a historic building" /></div>
+        </div>
+        <div className="hero-art">
+          <img
+            className="hero-team-photo"
+            src={homeImages[2].src}
+            alt="Uniforms for different professions"
+            width="720"
+            height="600"
+            fetchPriority="high"
+          />
         </div>
       </section>
-
-      <section className="w sec">
-        <h2>Our uniforms</h2>
-        <div className="g">
-          {categories.map((c) => (
-            <Link key={c.slug} className="c" href={`/products?category=${c.slug}`}>
-              <div className="sw" style={{ background: swatch(c.id), height: 120 }} />
-              <h3>{c.name}</h3>
-              <p className="m">{c.count} items</p>
+      <section className="container section">
+        <div className="section-heading">
+          <h2>Shop by Category</h2>
+        </div>
+        <div className="category-grid">
+          {categories.map((category) => (
+            <Link
+              className="category-card"
+              key={category.id}
+              href={`/products?category=${encodeURIComponent(category.slug)}`}
+            >
+              {categoryImages[category.slug] ? (
+                <img
+                  className="category-photo"
+                  src={categoryImages[category.slug].src}
+                  alt={category.name}
+                  width="400"
+                  height="320"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="category-swatch" style={{ background: swatch(category.id) }} />
+              )}
+              <h3 className="category-caption">{category.name}</h3>
             </Link>
           ))}
         </div>
       </section>
-
-      {popular.length ? (
-        <section className="w" style={{ paddingBottom: 48 }}>
-          <h2>Popular items</h2>
-          <div className="g">{popular.map((p) => <ProductCard key={p.id} p={p} />)}</div>
+      {featured.length > 0 && (
+        <section className="container section featured-section">
+          <div className="section-heading">
+            <h2>Featured Products</h2>
+            <Link className="text-link" href="/products">
+              View all products →
+            </Link>
+          </div>
+          <div className="card-grid">
+            {featured.map((product) => (
+              <ProductCard key={product.id} p={product} />
+            ))}
+          </div>
         </section>
-      ) : null}
-
-      <section className="w" style={{ paddingBottom: 48 }}>
-        <div className="note">
-          <h2>Why choose Tata Tex</h2>
-          <ul>
-            <li>Trusted quality and reliability since 1983</li>
-            <li>Affordable pricing for retail and bulk orders</li>
-            <li>Timely delivery and efficient service for institutions and businesses</li>
-            <li>Modern designs combined with skilled craftsmanship</li>
-            <li>Friendly, customer-focused approach</li>
-          </ul>
-          <Link className="btn" href="/contact?type=quote">Request a quotation</Link>
+      )}
+      <section className="container section home-trust" aria-labelledby="home-trust-title">
+        <div className="home-trust-heading">
+          <p className="eyebrow">What we offer</p>
+          <h2 id="home-trust-title">Uniforms for everyday work and special occasions.</h2>
+          <p>
+            Explore uniform collections for schools, workplaces, and teams, with options for retail
+            and wholesale enquiries.
+          </p>
+        </div>
+        <div className="home-trust-grid">
+          <article className="home-trust-item">
+            <span className="home-trust-number">01</span>
+            <h3>Made for many roles</h3>
+            <p>Browse collections for education, healthcare, hospitality, security, and more.</p>
+          </article>
+          <article className="home-trust-item">
+            <span className="home-trust-number">02</span>
+            <h3>Retail &amp; wholesale</h3>
+            <p>Tell us what you need, whether it is one item or a larger team requirement.</p>
+          </article>
+        </div>
+      </section>
+      <section className="container home-quote-wrap" aria-labelledby="home-quote-title">
+        <div className="home-quote-callout">
+          <div>
+            <p className="eyebrow">Let’s get started</p>
+            <h2 id="home-quote-title">Looking for the right uniform?</h2>
+            <p>Share your requirements with us and request a quotation.</p>
+          </div>
+          <Link className="btn home-quote-button" href="/contact?type=quote">
+            Request a Quote <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
     </>

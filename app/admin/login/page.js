@@ -10,12 +10,20 @@ export default async function LoginPage({ searchParams }) {
   if (await getUser()) redirect('/admin');
   return (
     <div className="login">
-      <form action={login} className="afm">
+      <form action={login} className="admin-form">
         <h1>Tata Tex admin</h1>
         <Banner sp={sp} />
-        <label>Username<input name="username" autoComplete="username" required /></label>
-        <label>Password<input name="password" type="password" autoComplete="current-password" required /></label>
-        <button className="btn" type="submit">Log in</button>
+        <label>
+          Email
+          <input name="email" type="email" autoComplete="username" required />
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" autoComplete="current-password" required />
+        </label>
+        <button className="btn" type="submit">
+          Log in
+        </button>
       </form>
     </div>
   );

@@ -1,0 +1,1 @@
+Extract into D:\Pyraxis\tatatex\tatatex-next, preserving the components folder. Replace both Footer.js and Footer.module.css. Restart npm run dev. Gradient outline only, navy interior, clock icon and opening hours. Responsive sizes included.
