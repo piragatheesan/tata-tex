@@ -47,9 +47,7 @@ export default function ProductCard({ p: product }) {
                 {product.category_name ? ` · ${product.category_name}` : ''}
               </small>
             </span>
-            <span className="product-hover-action">
-              View Uniform Details <span>↗</span>
-            </span>
+            <span className="product-hover-action">View Uniform Details</span>
           </span>
         </span>
         <h3>{product.name}</h3>

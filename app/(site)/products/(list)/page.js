@@ -1,4 +1,4 @@
-import { getCategories, getProducts, getPriceBounds } from '@/lib/queries';
+import { getCategories, getProducts } from '@/lib/queries';
 import ProductBrowser from '@/components/ProductBrowser';
 
 export const metadata = { title: 'Products' };
@@ -9,21 +9,29 @@ const SORT_VALUES = ['default', 'name', 'name_desc', 'code', 'price_asc', 'price
 const one = (v) => (Array.isArray(v) ? v[0] : v) || '';
 const num = (v) => {
   const s = one(v);
-  const n = parseFloat(s);
+  const n = s === '' ? NaN : Number(s);
   return Number.isFinite(n) && n >= 0 ? String(n) : '';
 };
 
 export default async function Products({ searchParams }) {
   const sp = await searchParams;
-  const categories = (await getCategories()).map(({ id, slug, name, count }) => ({
+  const [categoryRows, productRows] = await Promise.all([getCategories(), getProducts()]);
+  const categories = categoryRows.map(({ id, slug, name, count }) => ({
     id,
     slug,
     name,
     count,
   }));
-  const bounds = await getPriceBounds();
+  const prices = productRows
+    .filter((p) => p.price_display === 'public' && Number.isFinite(p.price))
+    .map((p) => p.price);
+  const bounds = {
+    n: prices.length,
+    min: prices.length ? Math.min(...prices) : null,
+    max: prices.length ? Math.max(...prices) : null,
+  };
   // Only the fields the cards need are sent to the browser.
-  const products = (await getProducts()).map((p) => ({
+  const products = productRows.map((p) => ({
     id: p.id,
     slug: p.slug,
     code: p.code,

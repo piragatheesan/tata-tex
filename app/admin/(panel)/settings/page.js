@@ -4,6 +4,13 @@ import styles from '@/components/admin/Admin.module.css';
 export default async function Settings() {
   const user = await requireUser();
   const configured = Boolean(process.env.SMTP_HOST && process.env.MAIL_TO);
+  const fields = [
+    ['SMTP server', process.env.SMTP_HOST || 'Not configured'],
+    ['Port', process.env.SMTP_PORT || '587'],
+    ['Sender', process.env.MAIL_FROM || process.env.SMTP_USER || 'Not configured'],
+    ['Notifications sent to', process.env.MAIL_TO || 'Not configured'],
+    ['SMTP password', process.env.SMTP_PASS ? 'Saved securely (hidden)' : 'Not configured'],
+  ];
   return (
     <div className={styles.dashboard}>
       <header className={styles.heading}>
@@ -12,45 +19,66 @@ export default async function Settings() {
           <p>Account and enquiry notifications.</p>
         </div>
       </header>
-      <section className={styles.panel}>
-        <h2>My account</h2>
-        <p>
-          Signed in as {user.username} ({user.role}).
-        </p>
-        <Link className={styles.outline} href="/admin/users">
-          Change password
-        </Link>
-      </section>
-      <section className={styles.panel}>
-        <h2>Email setup</h2>
-        <p>
-          Shop notifications:{' '}
-          <strong>
-            {configured ? 'Configured — delivery has not been verified.' : 'Not configured.'}
-          </strong>
-        </p>
-        <p>
-          New enquiries are saved before notifications are sent. Customer confirmation emails are
-          not enabled.
-        </p>
-        {user.role === 'administrator' ? (
-          <>
-            <p>
-              Add your email provider’s SMTP settings to the server environment or your local
-              .env.local file:
-            </p>
-            <pre className={styles.code}>
-              {'SMTP_HOST=\nSMTP_PORT=587\nSMTP_USER=\nSMTP_PASS=\nMAIL_FROM=\nMAIL_TO='}
-            </pre>
-            <p>
-              Restart or redeploy after updating these settings. Submit a test enquiry and check
-              your inbox to verify delivery. Keep credentials private and out of Git.
-            </p>
-          </>
-        ) : (
-          <p>Contact your administrator to configure email delivery.</p>
-        )}
-      </section>
+      <div className="row g-4">
+        <div className="col-12 col-lg-4">
+          <section className="card">
+            <div className="card-body">
+              <h2 className="card-title">My account</h2>
+              <p>
+                Signed in as <strong>{user.username}</strong> ({user.role}).
+              </p>
+              <Link
+                className={`btn btn-primary ${styles.settingsButton}`}
+                href="/admin/users#change-password"
+              >
+                Change password
+              </Link>
+            </div>
+          </section>
+        </div>
+        <div className="col-12 col-lg-8">
+          <section className="card">
+            <div className="card-body">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h2 className="card-title">Email setup</h2>
+                <span className={`${styles.badge} ${configured ? styles.green : styles.rose}`}>
+                  {configured ? 'Configured' : 'Not configured'}
+                </span>
+              </div>
+              <p>New enquiries are saved before notifications are sent to your team.</p>
+              {user.role === 'administrator' ? (
+                <>
+                  <div className="table-responsive">
+                    <table className="table">
+                      <tbody>
+                        {fields.map(([label, value]) => (
+                          <tr key={label}>
+                            <th scope="row">{label}</th>
+                            <td>{value}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="alert alert-info" role="note">
+                    Configuration is present when marked configured; delivery still needs a test
+                    enquiry. Customer confirmation emails are not enabled.
+                  </div>
+                  <p>
+                    To change these settings, update your private server environment or .env.local
+                    file, then restart or redeploy. Passwords are never displayed here.
+                  </p>
+                </>
+              ) : (
+                <p>Contact your administrator to configure email delivery.</p>
+              )}
+              <Link className={`btn btn-outline-primary ${styles.settingsButton}`} href="/contact">
+                Open contact form
+              </Link>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   );
 }

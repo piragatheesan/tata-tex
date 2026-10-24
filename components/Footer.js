@@ -16,7 +16,7 @@ export default function Footer() {
             workplaces and teams.
           </p>
           <Link className={styles.quote} href="/contact?type=quote">
-            Get a Quote <span aria-hidden="true">↗</span>
+            Get a Quote
           </Link>
         </div>
         <section className={styles.section} aria-label="Visit us">
@@ -32,7 +32,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            Get directions <span aria-hidden="true">↗</span>
+            Get directions
           </a>
         </section>
         <section className={styles.section} aria-label="Contact and opening hours">

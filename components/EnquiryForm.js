@@ -27,10 +27,16 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
     const d = Object.fromEntries(new FormData(e.currentTarget));
     const x = {};
     if (!d.name.trim()) x.name = 'Please enter your name.';
-    if (!d.contact.trim()) x.contact = 'Please enter an email address or phone number.';
+    if (d.contact.trim().length < 3)
+      x.contact = 'Please enter a valid email address or phone number.';
+    if (d.qty && (!Number.isFinite(Number(d.qty)) || Number(d.qty) <= 0))
+      x.qty = 'Quantity must be greater than zero.';
     if (!d.message.trim()) x.message = 'Please enter a message.';
     setErrors(x);
-    if (Object.keys(x).length) return;
+    if (Object.keys(x).length) {
+      e.currentTarget.elements.namedItem(Object.keys(x)[0])?.focus();
+      return;
+    }
     setStatus('sending');
     try {
       const r = await fetch('/api/enquiries', {
@@ -47,7 +53,9 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
           hp: d.hp,
         }),
       });
-      const result = await r.json();
+      const result = await r
+        .json()
+        .catch(() => ({ error: 'The server could not process your enquiry. Please try again.' }));
       if (!r.ok) throw new Error(result.error || 'Please try again.');
       setStatus('done');
     } catch (error) {
@@ -74,7 +82,7 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
   return (
     <form onSubmit={onSubmit} noValidate className="form">
       <Field label="Enquiry type">
-        <select name="type" defaultValue={defaultType}>
+        <select className="form-select" name="type" defaultValue={defaultType}>
           <option>General enquiry</option>
           <option>Product enquiry</option>
           <option>Wholesale quotation</option>
@@ -82,6 +90,7 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
       </Field>
       <Field label="Your name *" error={errors.name}>
         <input
+          className="form-control"
           name="name"
           required
           maxLength={100}
@@ -91,6 +100,7 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
       </Field>
       <Field label="Email or phone *" error={errors.contact}>
         <input
+          className="form-control"
           name="contact"
           required
           maxLength={120}
@@ -99,14 +109,26 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
         />
       </Field>
       <Field label="Company (optional)">
-        <input name="company" autoComplete="organization" />
+        <input
+          className="form-control"
+          name="company"
+          maxLength={120}
+          autoComplete="organization"
+        />
       </Field>
       <div className="two-columns">
-        <Field label="Quantity">
-          <input name="qty" type="number" min="0" />
+        <Field label="Quantity" error={errors.qty}>
+          <input
+            className="form-control"
+            name="qty"
+            type="number"
+            min="0.01"
+            step="any"
+            aria-invalid={Boolean(errors.qty)}
+          />
         </Field>
         <Field label="Unit">
-          <select name="unit">
+          <select className="form-select" name="unit">
             <option>pieces</option>
             <option>sets</option>
             <option>metres</option>
@@ -116,6 +138,7 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
       </div>
       <Field label="Message *" error={errors.message}>
         <textarea
+          className="form-control"
           name="message"
           required
           maxLength={2000}
@@ -129,7 +152,7 @@ export default function EnquiryForm({ product, defaultType = 'General enquiry' }
           {serverError}
         </p>
       ) : null}
-      <button className="btn" type="submit" disabled={status === 'sending'}>
+      <button className="btn btn-primary" type="submit" disabled={status === 'sending'}>
         {status === 'sending' ? 'Sending…' : 'Send enquiry'}
       </button>
     </form>

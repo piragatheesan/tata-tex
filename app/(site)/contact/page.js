@@ -16,8 +16,8 @@ export default async function Contact({ searchParams }) {
         <h1>Get in Touch</h1>
         <p>Tell us what you need. We’ll help you find the right uniforms.</p>
       </div>
-      <div className="contact-grid">
-        <aside className="contact-details">
+      <div className="row g-4">
+        <aside className="col-12 col-lg-5 contact-details">
           <h2>Ordering for a team?</h2>
           <p>
             Include your preferred products, sizes and quantities so we can understand your order.
@@ -29,7 +29,7 @@ export default async function Contact({ searchParams }) {
             </div>
           ))}
         </aside>
-        <section className="enquiry-panel">
+        <section className="col-12 col-lg-7 enquiry-panel">
           <h2>Send an enquiry</h2>
           <p className="muted">Fields marked * are required.</p>
           <EnquiryForm key={defaultType} defaultType={defaultType} />

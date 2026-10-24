@@ -7,3 +7,8 @@ data/
 
 sqlite-export.json
 exports/
+
+artifacts/
+playwright-report/
+test-results/
+__pycache__/

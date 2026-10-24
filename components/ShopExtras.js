@@ -62,7 +62,7 @@ export default function ShopExtras() {
     <>
       <section className="tips">
         <h2>Uniform buying and care tips</h2>
-        <div className="tiproduct-grid">
+        <div className="tipgrid">
           {TIPS.map((t) => (
             <article key={t.title} className="tip">
               <Icon name={t.icon} />
@@ -77,12 +77,12 @@ export default function ShopExtras() {
       <section className="promo">
         <h2>Ordering for a school, hospital, hotel or company?</h2>
         <p>Send us your list and quantities and ask for a wholesale quotation.</p>
-        <div className="row">
+        <div className="button-row">
           <Link className="btn-pill" href="/contact?type=quote">
             Request a quotation
           </Link>
           <Link className="btn-outline txt-link" href="/contact">
-            Contact us →
+            Contact us
           </Link>
         </div>
       </section>

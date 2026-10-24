@@ -1,0 +1,186 @@
+.hero {
+  --home-navy: #172e43;
+  --home-maroon: #741c39;
+}
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--home-maroon);
+}
+.hero {
+  min-height: 390px;
+  height: clamp(390px, 29vw, 510px);
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f3;
+}
+.heroImage {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 76%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.heroFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #fbfbfb 0%,
+    #fbfbfb 27%,
+    rgba(251, 251, 251, 0.96) 31%,
+    rgba(251, 251, 251, 0.68) 38%,
+    rgba(251, 251, 251, 0) 48%
+  );
+}
+.heroInner {
+  width: min(1310px, calc(100% - 64px));
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.heroCopy {
+  width: 38%;
+  padding-block: 26px;
+}
+.heroCopy h1 {
+  font:
+    400 clamp(44px, 4.3vw, 76px)/1.02 Georgia,
+    'Times New Roman',
+    serif;
+  color: var(--home-navy);
+  letter-spacing: -0.045em;
+  margin: 0 0 20px;
+}
+.heroCopy .eyebrow {
+  font-size: 9px;
+  white-space: nowrap;
+  letter-spacing: 0.22em;
+}
+.eyebrow span {
+  margin-inline: 7px;
+}
+.heroDescription {
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 340px;
+  margin: 0 0 22px;
+  color: #3d4d63;
+}
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.primaryButton,
+.outlineButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--home-maroon);
+  font-size: 12px;
+  font-weight: 700;
+  gap: 20px;
+  line-height: 1.5;
+}
+.primaryButton {
+  background: var(--home-maroon);
+  color: #fff;
+}
+.primaryButton:hover {
+  background: var(--home-navy);
+  border-color: var(--home-navy);
+  color: #fff;
+}
+.outlineButton {
+  border-color: #52657b;
+  background: #ffffff70;
+  color: var(--home-navy);
+}
+.outlineButton:hover {
+  color: var(--home-maroon);
+  border-color: var(--home-maroon);
+  background: #fff;
+}
+
+@media (min-width: 1700px) {
+  .heroCopy h1 {
+    font-size: 76px;
+  }
+  .heroDescription {
+    font-size: 17px;
+    max-width: 390px;
+  }
+  .heroCopy .eyebrow {
+    font-size: 10px;
+  }
+}
+@media (max-width: 1199px) {
+  .heroCopy {
+    width: 43%;
+  }
+  .heroImage {
+    width: 78%;
+  }
+  .heroFade {
+    background: linear-gradient(90deg, #fbfbfb 0%, #fbfbfb 29%, #fbfbfbe0 38%, #fbfbfb00 58%);
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    height: auto;
+    padding-top: 255px;
+  }
+  .heroImage {
+    width: 100%;
+    height: 270px;
+    object-position: right 40%;
+  }
+  .heroFade {
+    height: 285px;
+    background: linear-gradient(0deg, #fbfbfb 0%, #fbfbfb00 24%);
+  }
+  .heroInner {
+    width: calc(100% - 40px);
+  }
+  .heroCopy {
+    width: 100%;
+    padding: 20px 0 32px;
+  }
+  .heroCopy h1 {
+    font-size: 49px;
+    margin-bottom: 16px;
+  }
+  .heroCopy .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.17em;
+    white-space: normal;
+  }
+  .heroDescription {
+    font-size: 15px;
+    max-width: 400px;
+  }
+  .heroActions {
+    gap: 12px;
+  }
+  .primaryButton,
+  .outlineButton {
+    font-size: 12px;
+    min-height: 44px;
+    padding: 10px 20px;
+  }
+}
+.hero a:focus-visible,
+.hero button:focus-visible {
+  outline: 3px solid #277fc6;
+  outline-offset: 4px;
+}

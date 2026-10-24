@@ -1,5 +1,16 @@
 .shell {
+  --bg: #fff;
+  --fg: #0e1930;
+  --navy: #14263c;
+  --mar: #990e38;
   --admin-border: #dce3ec;
+  color-scheme: light;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow-x: clip;
   --admin-muted: #4f607a;
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr);
@@ -30,7 +41,7 @@
   margin: 8px 0 12px;
 }
 .sidebar {
-  background: var(--navy);
+  background: linear-gradient(150deg, #14263c, #102033);
   color: white;
   display: flex;
   flex-direction: column;
@@ -103,7 +114,8 @@
 .dashboard {
   display: grid;
   gap: 22px;
-  max-width: 1440px;
+  width: 100%;
+  max-width: none;
   margin: auto;
 }
 .heading {
@@ -164,9 +176,8 @@
   font-weight: 400;
 }
 .stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .stat {
   display: flex;
@@ -219,9 +230,7 @@
   color: #4f607a;
 }
 .dashboardGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.95fr) minmax(275px, 1fr);
-  gap: 18px;
+  margin-top: 0;
   align-items: start;
 }
 .panel {
@@ -239,20 +248,16 @@
   margin-bottom: 16px;
 }
 .recent {
-  grid-column: 1;
-  grid-row: 1;
+  width: 100%;
 }
 .review {
-  grid-column: 1;
-  grid-row: 2 / span 2;
+  width: 100%;
 }
 .quick {
-  grid-column: 2;
-  grid-row: 1;
+  width: 100%;
 }
 .email {
-  grid-column: 2;
-  grid-row: 2 / span 2;
+  width: 100%;
 }
 .actionList {
   display: grid;
@@ -266,7 +271,7 @@
   gap: 12px;
   align-items: center;
   padding: 13px 10px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .tableHead {
   background: #f1f3f6;
@@ -305,7 +310,7 @@
 .product > a > div {
   width: 100%;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
   background-color: #f0f0f2;
 }
 .product .outline {
@@ -358,6 +363,25 @@
   outline: 3px solid #277fc6;
   outline-offset: 3px;
 }
+.shell a.settingsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 24px;
+  border-radius: 28px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.shell .badge.green {
+  color: #086330;
+  background: #e9f8ef;
+}
+.shell .badge.rose {
+  color: #a30c38;
+  background: #fff0f3;
+}
 @media (min-width: 1450px) {
   .content {
     padding: 40px;
@@ -379,9 +403,7 @@
     height: 48px;
     border-radius: 15px;
   }
-  .dashboardGrid {
-    grid-template-columns: minmax(0, 1.5fr) minmax(250px, 1fr);
-  }
+
   .tableHead,
   .enquiry {
     gap: 8px;
@@ -389,12 +411,6 @@
   }
 }
 @media (max-width: 950px) {
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .dashboardGrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
   .recent,
   .review,
   .quick,
@@ -418,6 +434,11 @@
 @media (max-width: 700px) {
   .shell {
     display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    min-height: 100dvh;
   }
   .mobileHeader {
     display: flex;
@@ -469,9 +490,7 @@
   .heading > .primary {
     display: none;
   }
-  .stats {
-    gap: 10px;
-  }
+
   .stat {
     gap: 12px;
     padding: 12px;
@@ -494,9 +513,7 @@
   .panel {
     padding: 14px;
   }
-  .dashboardGrid {
-    gap: 14px;
-  }
+
   .tableHead {
     display: none;
   }
@@ -557,46 +574,13 @@
     display: block;
   }
 }
-@media (prefers-color-scheme: dark) {
-  .shell {
-    --bg: #111c29;
-    --fg: #edf1f7;
-    --admin-border: #344354;
-    --admin-muted: #b5c1d3;
-    color-scheme: dark;
-  }
-  .panel,
-  .stat {
-    background: #192738;
-  }
-  .outline,
-  .smallButton {
-    background: #213146;
-    border-color: #4a5c72;
-    color: var(--fg);
-  }
-  .tableHead,
-  .code {
-    background: #233347;
-  }
-  .rose {
-    background: #482338;
-    color: #ffb9ce;
-  }
-  .blue {
-    background: #1c3553;
-    color: #b4d9ff;
-  }
-  .green {
-    background: #173f32;
-    color: #b8f0d2;
-  }
-  .amber {
-    background: #453322;
-    color: #ffdaad;
-  }
-  .neutral {
-    background: #2e3d51;
-    color: #ced8e6;
-  }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+.stat {
+  height: 100%;
 }

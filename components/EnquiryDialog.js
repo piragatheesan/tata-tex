@@ -7,10 +7,12 @@ export default function EnquiryDialog({ product }) {
     const element = dialog.current;
     if (window.location.hash === '#enquire') element.showModal();
     const previousOverflow = document.body.style.overflow;
-    const observer = new MutationObserver(() => {
+    const updateScroll = () => {
       document.body.style.overflow = element.open ? 'hidden' : previousOverflow;
-    });
+    };
+    const observer = new MutationObserver(updateScroll);
     observer.observe(element, { attributes: true, attributeFilter: ['open'] });
+    updateScroll();
     return () => {
       observer.disconnect();
       document.body.style.overflow = previousOverflow;

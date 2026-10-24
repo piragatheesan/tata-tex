@@ -3,43 +3,22 @@ import { getCategories, getProducts } from '@/lib/queries';
 import { swatch } from '@/lib/ui';
 import { categoryImages, homeImages } from '@/lib/product-images';
 import ProductCard from '@/components/ProductCard';
+import HomeHero from '@/components/HomeHero';
+import { getHomeSlides } from '@/lib/home-content';
 export const dynamic = 'force-dynamic';
 export default async function Home() {
-  const [categories, products] = await Promise.all([getCategories(), getProducts()]);
+  const [categories, products, slides] = await Promise.all([
+    getCategories(),
+    getProducts(),
+    getHomeSlides(),
+  ]);
   const featured = categories
     .map((category) => products.find((product) => product.category_slug === category.slug))
     .filter(Boolean)
     .slice(0, 3);
   return (
     <>
-      <section className="home-hero container">
-        <div className="hero-copy">
-          <h1>
-            Uniforms for
-            <br />
-            Every Role.
-          </h1>
-          <p className="hero-description">Quality uniforms for schools, workplaces and teams.</p>
-          <div className="button-row">
-            <Link className="btn" href="/products">
-              Browse Products
-            </Link>
-            <Link className="btn-outline" href="/contact?type=quote">
-              Get a Quote
-            </Link>
-          </div>
-        </div>
-        <div className="hero-art">
-          <img
-            className="hero-team-photo"
-            src={homeImages[2].src}
-            alt="Uniforms for different professions"
-            width="720"
-            height="600"
-            fetchPriority="high"
-          />
-        </div>
-      </section>
+      <HomeHero slides={slides} />
       <section className="container section">
         <div className="section-heading">
           <h2>Shop by Category</h2>
@@ -73,7 +52,7 @@ export default async function Home() {
           <div className="section-heading">
             <h2>Featured Products</h2>
             <Link className="text-link" href="/products">
-              View all products →
+              View all products
             </Link>
           </div>
           <div className="card-grid">
@@ -113,7 +92,7 @@ export default async function Home() {
             <p>Share your requirements with us and request a quotation.</p>
           </div>
           <Link className="btn home-quote-button" href="/contact?type=quote">
-            Request a Quote <span aria-hidden="true">→</span>
+            Request a Quote
           </Link>
         </div>
       </section>

@@ -1,116 +1,223 @@
 .page {
-  width: min(1200px, calc(100% - 48px));
-  margin-inline: auto;
-  padding-block: 48px;
-}
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-  background: linear-gradient(120deg, #faf5f7, #f4f6fa);
-  border: 1px solid #e6e7ef;
-  border-radius: 28px;
-  padding: 28px;
-}
-.hero > div {
-  grid-column: 1;
-  grid-row: 1;
-  min-width: 0;
-  padding: 12px;
-}
-.hero > img {
-  display: block;
-  grid-column: 2;
-  grid-row: 1;
-  width: 100%;
-  height: 380px;
-  min-height: 0;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 18px;
-}
-.hero h1 {
-  font-size: clamp(32px, 3.4vw, 48px);
-  line-height: 1.12;
-  max-width: 480px;
-  margin: 12px 0 20px;
-}
-.hero p {
-  max-width: 420px;
-  line-height: 1.7;
-}
-.offers {
-  margin-top: 40px;
-}
-.offers h2 {
-  font-size: clamp(26px, 3vw, 34px);
-}
-.services {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 20px;
-}
-.services article {
-  padding: 24px;
-  border: 1px solid #e6e7ef;
-  border-radius: 18px;
+  color: #172e43;
   background: #fff;
 }
-.services h3 {
-  margin: 0 0 10px;
-  color: #1b2a5c;
+.hero {
+  position: relative;
+  min-height: 450px;
+  height: clamp(450px, 34vw, 560px);
+  overflow: hidden;
+  background: #faf9f7;
+}
+.heroImage {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 82%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+.heroFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #faf9f7 0%,
+    #faf9f7 24%,
+    #faf9f7f0 32%,
+    #faf9f78c 41%,
+    #faf9f700 53%
+  );
+}
+.heroInner {
+  position: relative;
+  height: 100%;
+  width: min(1280px, calc(100% - 64px));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+}
+.heroCopy {
+  width: 43%;
+  padding-block: 36px;
+}
+.eyebrow {
+  color: #741c39;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+.heroCopy h1 {
+  font:
+    400 clamp(44px, 4.8vw, 72px)/1.05 Georgia,
+    'Times New Roman',
+    serif;
+  letter-spacing: -0.045em;
+  color: #172e43;
+  margin: 0 0 24px;
+}
+.description {
+  color: #4e596b;
   font-size: 18px;
+  line-height: 1.65;
+  max-width: 400px;
+  margin: 0 0 28px;
 }
-.services p {
-  margin: 0;
-  line-height: 1.7;
-  color: #566274;
+.primaryButton,
+.outlineButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  border-radius: 999px;
+  padding: 11px 28px;
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid #741c39;
+  text-decoration: none;
 }
-@media (max-width: 800px) {
+.primaryButton {
+  background: #741c39;
+  color: #fff;
+}
+.primaryButton:hover {
+  color: #fff;
+  background: #172e43;
+  border-color: #172e43;
+}
+.outlineButton {
+  background: #fff;
+  border-color: #748298;
+  color: #172e43;
+  align-self: flex-start;
+}
+.outlineButton:hover {
+  color: #741c39;
+  border-color: #741c39;
+  background: #faf5f7;
+}
+.page a:focus-visible {
+  outline: 3px solid #277fc6;
+  outline-offset: 4px;
+}
+.offers {
+  width: min(1280px, calc(100% - 64px));
+  margin: 36px auto 56px;
+}
+.service {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #e5e2df;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.serviceImage {
+  width: 100%;
+  height: 185px;
+  background-image: url('/images/about-story-services.webp');
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+}
+.serviceCopy {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+.serviceCopy h2 {
+  font:
+    400 clamp(23px, 2.1vw, 31px)/1.15 Georgia,
+    'Times New Roman',
+    serif;
+  letter-spacing: -0.035em;
+  color: #172e43;
+  margin: 0 0 12px;
+}
+.serviceCopy p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #4e596b;
+  margin: 0 0 22px;
+  flex: 1;
+}
+@media (max-width: 1000px) {
+  .heroCopy {
+    width: 48%;
+  }
+  .heroCopy h1 {
+    font-size: 50px;
+  }
+  .description {
+    font-size: 16px;
+    max-width: 340px;
+  }
+  .serviceCopy {
+    padding: 18px;
+  }
+  .serviceImage {
+    height: 160px;
+  }
+  .outlineButton {
+    padding-inline: 20px;
+  }
+}
+@media (max-width: 767px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
-    padding: 24px;
-  }
-  .hero > div {
-    grid-column: 1;
-    grid-row: 1;
-    padding: 0;
-  }
-  .hero > img {
-    grid-column: 1;
-    grid-row: 2;
     height: auto;
-    aspect-ratio: 3 / 2;
-    max-height: 340px;
+    min-height: 0;
+    padding-top: 260px;
   }
-  .services {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+  .heroImage {
+    width: 100%;
+    height: 280px;
+    object-position: right center;
   }
-}
-@media (max-width: 500px) {
-  .page {
-    width: calc(100% - 32px);
-    padding-block: 24px 32px;
+  .heroFade {
+    height: 290px;
+    background: linear-gradient(0deg, #faf9f7 0%, #faf9f700 25%);
   }
-  .hero {
-    padding: 20px;
-    border-radius: 22px;
+  .heroInner {
+    width: calc(100% - 40px);
   }
-  .hero h1 {
-    font-size: 32px;
+  .heroCopy {
+    width: 100%;
+    padding: 24px 0 36px;
   }
-  .hero > img {
-    max-height: 240px;
-    border-radius: 14px;
+  .heroCopy h1 {
+    font-size: clamp(40px, 8vw, 56px);
+    margin-bottom: 18px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  .description {
+    font-size: 16px;
+    max-width: 480px;
+    margin-bottom: 24px;
   }
   .offers {
-    margin-top: 28px;
+    width: calc(100% - 40px);
+    margin-block: 28px 36px;
   }
-  .services article {
-    padding: 20px;
+  .serviceImage {
+    height: 210px;
+  }
+  .serviceCopy {
+    padding: 22px;
+  }
+  .serviceCopy h2 {
+    font-size: 29px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page a {
+    transition: none;
   }
 }

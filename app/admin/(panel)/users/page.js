@@ -1,3 +1,4 @@
+import SubmitButton from '@/components/admin/SubmitButton';
 import { getProfiles } from '@/lib/queries';
 import { requireUser } from '@/lib/auth';
 import { addUser, deleteUser, changePassword } from '@/lib/actions';
@@ -12,19 +13,30 @@ export default async function Users({ searchParams }) {
     <>
       <h1>{isAdmin ? 'Users' : 'My account'}</h1>
       <Banner sp={sp} />
-      <h2>Change my password</h2>
+      <h2 id="change-password">Change my password</h2>
       <form action={changePassword} className="admin-form inline">
         <label>
           Current password
-          <input name="current" type="password" autoComplete="current-password" required />
+          <input
+            className="form-control"
+            name="current"
+            type="password"
+            autoComplete="current-password"
+            required
+          />
         </label>
         <label>
           New password (10+ characters)
-          <input name="next" type="password" autoComplete="new-password" minLength={10} required />
+          <input
+            className="form-control"
+            name="next"
+            type="password"
+            autoComplete="new-password"
+            minLength={10}
+            required
+          />
         </label>
-        <button className="btn" type="submit">
-          Change password
-        </button>
+        <SubmitButton>Change password</SubmitButton>
       </form>
       {isAdmin ? (
         <>
@@ -32,15 +44,28 @@ export default async function Users({ searchParams }) {
           <form action={addUser} className="admin-form inline">
             <label>
               Username
-              <input name="username" required maxLength={30} autoComplete="off" />
+              <input
+                className="form-control"
+                name="username"
+                required
+                maxLength={30}
+                autoComplete="off"
+              />
             </label>
             <label>
               Email
-              <input name="email" type="email" required autoComplete="off" />
+              <input
+                className="form-control"
+                name="email"
+                type="email"
+                required
+                autoComplete="off"
+              />
             </label>
             <label>
               Password (10+ characters)
               <input
+                className="form-control"
                 name="password"
                 type="password"
                 minLength={10}
@@ -50,18 +75,16 @@ export default async function Users({ searchParams }) {
             </label>
             <label>
               Role
-              <select name="role" defaultValue="staff">
+              <select className="form-select" name="role" defaultValue="staff">
                 <option value="staff">Staff (products and enquiries)</option>
                 <option value="administrator">Administrator (also manages users)</option>
               </select>
             </label>
-            <button className="btn" type="submit">
-              Add user
-            </button>
+            <SubmitButton>Add user</SubmitButton>
           </form>
           <h2>All users</h2>
-          <div className="table-scroll">
-            <table className="data-table">
+          <div className="table-scroll" tabIndex={0} role="region" aria-label="Staff accounts">
+            <table className="table table-hover data-table">
               <thead>
                 <tr>
                   <th>Username</th>
@@ -82,9 +105,13 @@ export default async function Users({ searchParams }) {
                           <summary>Delete</summary>
                           <form action={deleteUser}>
                             <input type="hidden" name="id" value={u.id} />
-                            <button className="btn" type="submit">
+                            <SubmitButton
+                              className="btn btn-outline-danger"
+                              pendingLabel="Deleting…"
+                              confirmMessage={`Permanently delete the account “${u.username}”?`}
+                            >
                               Delete {u.username}
-                            </button>
+                            </SubmitButton>
                           </form>
                         </details>
                       ) : (

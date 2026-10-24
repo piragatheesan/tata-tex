@@ -1,0 +1,90 @@
+// Bootstrap components share the site's existing brand colours; no global reset.
+.root {
+  --bs-body-color: #202b3b;
+  --bs-body-bg: #fff;
+  --bs-border-color: #dce3ec;
+  --bs-border-color-translucent: rgba(23, 46, 67, 0.14);
+  --bs-emphasis-color-rgb: 23, 46, 67;
+  --bs-border-width: 1px;
+  --bs-border-radius: 0.5rem;
+  --bs-border-radius-sm: 0.375rem;
+  --bs-border-radius-lg: 0.75rem;
+  --bs-secondary-color: #667085;
+  --bs-tertiary-bg: #f7f8fb;
+  --bs-secondary-bg: #eef1f5;
+  --bs-emphasis-color: #172e43;
+  --bs-primary-rgb: 116, 28, 57;
+  --bs-link-color: #741c39;
+  --bs-link-hover-color: #172e43;
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.5;
+  --bs-info-text-emphasis: #153b67;
+  --bs-info-bg-subtle: #eaf3ff;
+  --bs-info-border-subtle: #c6d9f2;
+  --bs-success-text-emphasis: #086330;
+  --bs-success-bg-subtle: #e9f8ef;
+  --bs-success-border-subtle: #b3ddc5;
+  --bs-danger-text-emphasis: #a30c38;
+  --bs-danger-bg-subtle: #fff0f3;
+  --bs-danger-border-subtle: #f0bac8;
+  $primary: #741c39;
+  $danger: #a41237;
+  $secondary: #172e43;
+  @import 'bootstrap/scss/bootstrap-grid';
+  @import 'bootstrap/scss/mixins';
+  @import 'bootstrap/scss/forms';
+  @import 'bootstrap/scss/buttons';
+  @import 'bootstrap/scss/card';
+  @import 'bootstrap/scss/tables';
+  @import 'bootstrap/scss/alert';
+  @import 'bootstrap/scss/badge';
+}
+
+// Bootstrap gutters use column padding. The legacy .row gap would add extra
+// width and wrap columns even when their percentages add up to 100%.
+.root .row {
+  gap: 0;
+  align-items: stretch;
+}
+
+// Match Bootstrap controls to the approved pill buttons throughout the site.
+.root .btn {
+  --bs-btn-border-radius: 999px;
+  --bs-btn-padding-x: 24px;
+  --bs-btn-padding-y: 12px;
+  --bs-btn-font-size: 14px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  gap: 12px;
+}
+
+// Keep existing plain .btn elements in the burgundy website theme.
+.root .btn-outline,
+.root .btn-pill {
+  line-height: 1.5;
+}
+
+.root .btn:not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-danger) {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #741c39;
+  --bs-btn-border-color: #741c39;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #172e43;
+  --bs-btn-hover-border-color: #172e43;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #172e43;
+}
+
+.root :is(.btn, .btn-outline, .btn-pill, button, summary):focus-visible {
+  outline: 3px solid #277fc6;
+  outline-offset: 4px;
+}
+
+.root .danger > summary {
+  min-height: 44px;
+  padding-block: 10px;
+}

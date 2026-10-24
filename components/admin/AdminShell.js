@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import Icon from './Icon';
 import styles from './Admin.module.css';
+import bootstrap from './Bootstrap.module.css';
 
 export default function AdminShell({ children, user, logout }) {
   const [open, setOpen] = useState(false);
@@ -28,10 +29,11 @@ export default function AdminShell({ children, user, logout }) {
     ['/admin/categories', 'Categories', 'tag'],
     ['/admin/enquiries', 'Enquiries', 'chat'],
     ...(user.role === 'administrator' ? [['/admin/users', 'Staff', 'users']] : []),
+    ...(user.role === 'administrator' ? [['/admin/homepage', 'Homepage', 'home']] : []),
     ['/admin/settings', 'Settings', 'settings'],
   ];
   return (
-    <div className={`admin-shell ${styles.shell}`}>
+    <div className={`admin-shell ${bootstrap.root} ${styles.shell}`}>
       <header className={styles.mobileHeader}>
         <Link href="/admin" aria-label="Tata Tex dashboard">
           <img src="/logo-mark.png" width="48" height="48" alt="Tata Tex" />
@@ -48,9 +50,6 @@ export default function AdminShell({ children, user, logout }) {
         </button>
       </header>
       <aside id="admin-navigation" className={`${styles.sidebar} ${open ? styles.open : ''}`}>
-        <Link href="/admin" className={styles.logo} aria-label="Tata Tex dashboard">
-          <img src="/logo-mark.png" width="88" height="88" alt="Tata Tex" />
-        </Link>
         <nav aria-label="Administration">
           {links.map(([href, label, icon]) => (
             <Link
@@ -81,7 +80,7 @@ export default function AdminShell({ children, user, logout }) {
           </form>
         </div>
       </aside>
-      <main className={styles.content}>{children}</main>
+      <main className={`container-fluid ${styles.content}`}>{children}</main>
     </div>
   );
 }

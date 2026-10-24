@@ -22,6 +22,7 @@ function Search({ id, value, onChange }) {
     <div className="search-box">
       <input
         id={id}
+        className="form-control"
         type="search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -229,6 +230,7 @@ export default function ProductBrowser({ categories, products, initial, bounds, 
             <label htmlFor="product-sort">Sort</label>
             <select
               id="product-sort"
+              className="form-select"
               value={sort}
               onChange={(e) => setSort(e.target.value)}
               aria-label="Sort products"

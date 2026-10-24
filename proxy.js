@@ -45,6 +45,8 @@ export async function proxy(request) {
           getAll: () => request.cookies.getAll(),
           setAll: (values) => {
             values.forEach(({ name, value }) => request.cookies.set(name, value));
+            // Forward refreshed cookies, rather than the pre-refresh header copy.
+            requestHeaders.set('cookie', request.cookies.toString());
             response = next();
             values.forEach(({ name, value, options }) =>
               response.cookies.set(name, value, options),

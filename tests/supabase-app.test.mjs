@@ -42,6 +42,7 @@ const rows = [
 let authorized = true;
 let mutationFails = false;
 const deletedImages = [];
+let lastRange;
 function query(table) {
   const filters = [];
   let mode = 'select',
@@ -53,7 +54,8 @@ function query(table) {
     order() {
       return this;
     },
-    range() {
+    range(start, end) {
+      lastRange = [start, end];
       return this;
     },
     limit() {
@@ -186,4 +188,27 @@ test('failed Supabase save cleans only the new image, preserving the original', 
   await assert.rejects(actions.saveProduct(form), /REDIRECT:.*error=/);
   assert.deepEqual(deletedImages, ['new-photo.jpg']);
   mutationFails = false;
+});
+
+test('invalid admin product IDs return not-found without a database lookup', async () => {
+  for (const id of [NaN, -1, 0, 1.5, Infinity])
+    assert.equal(await queries.getProductById(id), null);
+});
+
+test('enquiry pagination reads the requested range', async () => {
+  await queries.getEnquiries({ limit: 51, offset: 50 });
+  assert.deepEqual(lastRange, [50, 100]);
+});
+
+test('saving enquiries retains local filters and rejects external redirect destinations', async () => {
+  const form = new FormData();
+  form.set('id', '1');
+  form.set('status', 'New');
+  form.set('back', '/admin/enquiries?page=1&status=New');
+  await assert.rejects(
+    actions.updateEnquiry(form),
+    /REDIRECT:\/admin\/enquiries\?page=1&status=New&ok=/,
+  );
+  form.set('back', 'https://example.com');
+  await assert.rejects(actions.updateEnquiry(form), /REDIRECT:\/admin\/enquiries\?ok=/);
 });

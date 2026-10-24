@@ -1,6 +1,12 @@
 import './globals.css';
 import LoadingScreen from '@/components/LoadingScreen';
 
+export const metadata = {
+  title: 'Tata Tex – Uniforms and Accessories',
+  description:
+    'Uniforms and accessories for schools, workplaces and teams. Retail and wholesale enquiries.',
+};
+
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 
 export default function RootLayout({ children }) {

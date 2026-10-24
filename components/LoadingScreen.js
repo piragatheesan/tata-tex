@@ -1,19 +1,26 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
-const DISPLAY_MS = 6300;
-const FADE_MS = 700;
+const DISPLAY_MS = 1200;
+const FADE_MS = 250;
 
 export default function LoadingScreen() {
   const [phase, setPhase] = useState('waiting');
+  const pathname = usePathname();
 
   useEffect(() => {
     // Error recovery links should be available immediately.
-    if (document.querySelector('[data-not-found]')) return;
+    if (pathname !== '/' || document.querySelector('[data-not-found]')) return;
+    try {
+      if (sessionStorage.getItem('tatatex-intro-seen')) return;
+      sessionStorage.setItem('tatatex-intro-seen', '1');
+    } catch {}
     const previousOverflow = document.body.style.overflow;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const duration = reducedMotion ? 2000 : DISPLAY_MS;
+    if (reducedMotion) return;
+    const duration = DISPLAY_MS;
     setPhase('show');
     document.body.style.overflow = 'hidden';
     const displayTimer = window.setTimeout(() => setPhase('leave'), duration);
@@ -26,7 +33,7 @@ export default function LoadingScreen() {
       window.clearTimeout(finishTimer);
       document.body.style.overflow = previousOverflow;
     };
-  }, []);
+  }, [pathname]);
 
   if (phase === 'waiting' || phase === 'gone') return null;
 

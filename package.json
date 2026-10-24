@@ -11,11 +11,16 @@
     "test": "node --experimental-vm-modules --test tests/*.test.mjs",
     "setup:admin": "node scripts/setup-admin.mjs",
     "seed:supabase": "node scripts/seed-supabase.mjs",
-    "migrate:sqlite": "node scripts/import-sqlite.mjs"
+    "migrate:sqlite": "node scripts/import-sqlite.mjs",
+    "build:admin-css": "node scripts/build-admin-bootstrap.mjs",
+    "prebuild": "npm run build:admin-css",
+    "predev": "npm run build:admin-css",
+    "test:browser": "node scripts/browser-review.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
+    "bootstrap": "^5.3.8",
     "next": "^16.4.0",
     "nodemailer": "^10.1.0",
     "react": "^19.0.0",
@@ -26,7 +31,11 @@
     "node": ">=20.9.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@electric-sql/pglite": "^0.5.9",
-    "prettier": "^3.9.10"
+    "@playwright/test": "^1.64.1",
+    "postcss": "^8.5.31",
+    "prettier": "^3.9.10",
+    "sass": "^1.106.1"
   }
 }

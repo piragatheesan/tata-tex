@@ -3,13 +3,13 @@ export default function Banner({ sp }) {
   const ok = typeof sp?.ok === 'string' ? sp.ok : '';
   if (error)
     return (
-      <p className="banner bad" role="alert">
+      <p className="alert alert-danger banner bad" role="alert">
         {error}
       </p>
     );
   if (ok)
     return (
-      <p className="banner good" role="status">
+      <p className="alert alert-success banner good" role="status">
         {ok}
       </p>
     );

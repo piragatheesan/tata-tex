@@ -86,6 +86,10 @@ test('homepage renders without product slug and links to actual categories', asy
     },
     '@/lib/ui': { swatch: () => '#fff' },
     '@/lib/product-images': { categoryImages: {}, homeImages: [{}, {}, { src: '/hero.webp' }] },
+    '@/lib/home-content': { getHomeSlides: async () => [] },
+    '@/components/HomeHero': component(() =>
+      React.createElement('h1', null, 'Uniforms for Every Role.'),
+    ),
     '@/components/ProductCard': component(({ p }) => React.createElement('article', null, p.name)),
   });
   const html = renderToStaticMarkup(await Home());

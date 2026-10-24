@@ -1,17 +1,22 @@
+import SubmitButton from '@/components/admin/SubmitButton';
 import Link from 'next/link';
 import { getEnquiries } from '@/lib/queries';
-import { getUser, requireUser } from '@/lib/auth';
+import { requireUser } from '@/lib/auth';
 import { STATUSES } from '@/lib/ui';
 import { updateEnquiry, deleteEnquiry } from '@/lib/actions';
 import Banner from '@/components/admin/Banner';
 
 export default async function AdminEnquiries({ searchParams }) {
-  await requireUser();
+  const user = await requireUser();
   const sp = await searchParams;
   const status = STATUSES.includes(sp.status) ? sp.status : '';
-  const rows = await getEnquiries({ status });
-  const isAdmin = (await getUser())?.role === 'administrator';
-  const back = '/admin/enquiries' + (status ? `?status=${encodeURIComponent(status)}` : '');
+  const page = Math.max(0, Math.min(100000, Math.trunc(Number(sp.page)) || 0));
+  const results = await getEnquiries({ status, limit: 51, offset: page * 50 });
+  const rows = results.slice(0, 50);
+  const isAdmin = user.role === 'administrator';
+  const pageUrl = (number) =>
+    `/admin/enquiries?page=${number}${status ? `&status=${encodeURIComponent(status)}` : ''}`;
+  const back = pageUrl(page);
   return (
     <>
       <h1>Enquiries</h1>
@@ -31,7 +36,7 @@ export default async function AdminEnquiries({ searchParams }) {
             </Link>
           ))}
         </div>
-        <a className="btn" href="/admin/enquiries/export">
+        <a className="btn btn-primary" href="/admin/enquiries/export">
           Download CSV
         </a>
       </div>
@@ -39,7 +44,13 @@ export default async function AdminEnquiries({ searchParams }) {
         rows.map((e) => (
           <article key={e.id} className="surface-card enq-card">
             <p className="muted">
-              #{e.id} · {e.created_at} · {e.type}
+              #{e.id} ·{' '}
+              {new Intl.DateTimeFormat('en-GB', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+                timeZone: 'Asia/Colombo',
+              }).format(new Date(e.created_at))}{' '}
+              · {e.type}
             </p>
             <h3>{e.product}</h3>
             <p>
@@ -53,7 +64,7 @@ export default async function AdminEnquiries({ searchParams }) {
               <input type="hidden" name="back" value={back} />
               <label>
                 Status
-                <select name="status" defaultValue={e.status}>
+                <select className="form-select" name="status" defaultValue={e.status}>
                   {STATUSES.map((s) => (
                     <option key={s}>{s}</option>
                   ))}
@@ -61,20 +72,27 @@ export default async function AdminEnquiries({ searchParams }) {
               </label>
               <label>
                 Internal notes (never shown publicly)
-                <input name="notes" defaultValue={e.notes} maxLength={2000} />
+                <input
+                  className="form-control"
+                  name="notes"
+                  defaultValue={e.notes}
+                  maxLength={2000}
+                />
               </label>
-              <button className="btn" type="submit">
-                Save
-              </button>
+              <SubmitButton>Save</SubmitButton>
             </form>
             {isAdmin ? (
               <details className="danger">
                 <summary>Delete</summary>
                 <form action={deleteEnquiry}>
                   <input type="hidden" name="id" value={e.id} />
-                  <button className="btn" type="submit">
+                  <SubmitButton
+                    className="btn btn-outline-danger"
+                    pendingLabel="Deleting…"
+                    confirmMessage={`Permanently delete enquiry #${e.id}?`}
+                  >
                     Delete enquiry #{e.id}
-                  </button>
+                  </SubmitButton>
                 </form>
               </details>
             ) : null}
@@ -83,6 +101,23 @@ export default async function AdminEnquiries({ searchParams }) {
       ) : (
         <p className="muted">No enquiries found.</p>
       )}
+      <nav className="toolbar" aria-label="Enquiry pages">
+        {page > 0 ? (
+          <Link className="btn btn-outline-primary" href={pageUrl(page - 1)}>
+            Previous page
+          </Link>
+        ) : (
+          <span />
+        )}
+        <span>Page {page + 1}</span>
+        {results.length > 50 ? (
+          <Link className="btn btn-outline-primary" href={pageUrl(page + 1)}>
+            Next page
+          </Link>
+        ) : (
+          <span />
+        )}
+      </nav>
     </>
   );
 }

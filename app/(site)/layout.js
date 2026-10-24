@@ -1,3 +1,4 @@
+import bootstrap from '@/components/admin/Bootstrap.module.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -15,7 +16,9 @@ export default function SiteLayout({ children }) {
         Skip to content
       </a>
       <Header />
-      <main id="main-content">{children}</main>
+      <main id="main-content" className={bootstrap.root}>
+        {children}
+      </main>
       <Footer />
     </>
   );

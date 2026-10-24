@@ -687,7 +687,7 @@ em {
   font-weight: 700;
 }
 .pc-enq::after {
-  content: '↗';
+  content: none;
 }
 .empty {
   border: 1px dashed var(--line);
