@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { site } from '@/lib/site';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -38,8 +39,7 @@ export default function Footer() {
           <h3>Contact</h3>
           <div className={styles.contacts}>
             <a href="tel:+94771151858">077 115 1858</a>
-            <a href="mailto:tatatex083@gmail.com">tatatex083@gmail.com</a>
-            <a href="mailto:tatatex1983@gmail.com">tatatex1983@gmail.com</a>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
           </div>
           <div className={styles.hoursGroup}>
             <h3>Opening hours</h3>

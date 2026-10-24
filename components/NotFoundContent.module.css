@@ -1,0 +1,99 @@
+.page {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 48px 24px 34px;
+  text-align: center;
+  color: var(--navy);
+}
+.art {
+  width: min(950px, 100%);
+  margin: 0 auto 24px;
+}
+.art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.page h1 {
+  font:
+    900 clamp(28px, 4vw, 52px)/1.15 'Lato',
+    Arial,
+    sans-serif;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+  color: var(--navy);
+}
+.page > p {
+  font-size: clamp(16px, 1.8vw, 22px);
+  margin: 0 auto;
+  max-width: 800px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin: 30px 0 24px;
+}
+.primary,
+.secondary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 54px;
+  min-width: 230px;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  border: 1.5px solid var(--navy);
+}
+.primary {
+  background: var(--mar);
+  border-color: var(--mar);
+  color: white;
+}
+.primary:hover {
+  color: white;
+  background: var(--navy);
+  border-color: var(--navy);
+}
+.secondary:hover {
+  background: var(--card);
+  color: var(--mar);
+  border-color: var(--mar);
+}
+.page .help {
+  font-size: 17px;
+}
+.help a {
+  color: var(--mar);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page a:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 5px;
+}
+@media (max-width: 600px) {
+  .page {
+    padding: 40px 20px;
+  }
+  .art {
+    margin-bottom: 26px;
+  }
+  .actions {
+    gap: 12px;
+    margin-block: 26px;
+  }
+  .primary,
+  .secondary {
+    width: 100%;
+    max-width: 330px;
+    min-width: 0;
+    font-size: 16px;
+  }
+  .page .help {
+    font-size: 15px;
+  }
+}

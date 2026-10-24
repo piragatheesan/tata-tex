@@ -9,6 +9,8 @@ export default function LoadingScreen() {
   const [phase, setPhase] = useState('waiting');
 
   useEffect(() => {
+    // Error recovery links should be available immediately.
+    if (document.querySelector('[data-not-found]')) return;
     const previousOverflow = document.body.style.overflow;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const duration = reducedMotion ? 2000 : DISPLAY_MS;
