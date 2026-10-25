@@ -1,6 +1,9 @@
 import EnquiryForm from '@/components/EnquiryForm';
 import { site } from '@/lib/site';
-export const metadata = { title: 'Contact us' };
+export const metadata = {
+  title: 'Contact us',
+  alternates: { canonical: '/contact' },
+};
 export default async function Contact({ searchParams }) {
   const parameters = await searchParams;
   const defaultType = parameters.type === 'quote' ? 'Wholesale quotation' : 'General enquiry';

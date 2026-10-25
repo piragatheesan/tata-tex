@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './About.module.css';
 export const metadata = {
+  alternates: { canonical: '/about' },
   title: 'About Tata Tex',
   description:
     'Ready-made and custom uniforms for schools, workplaces and teams across Sri Lanka. Explore how Tata Tex can help with your uniform requirements.',

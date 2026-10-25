@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.tatatex.lk' }],
+        destination: 'https://tatatex.lk/:path*',
+        permanent: true,
+      },
+    ];
+  },
   experimental: {
     serverActions: { bodySizeLimit: '4mb' }, // product image uploads
   },

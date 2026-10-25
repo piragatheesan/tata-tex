@@ -1,7 +1,10 @@
 import { getCategories, getProducts } from '@/lib/queries';
 import ProductBrowser from '@/components/ProductBrowser';
 
-export const metadata = { title: 'Products' };
+export const metadata = {
+  title: 'Products',
+  alternates: { canonical: '/products' },
+};
 export const dynamic = 'force-dynamic';
 
 const AVAIL_VALUES = ['available', 'enquire', 'unavailable'];

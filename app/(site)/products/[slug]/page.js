@@ -13,6 +13,7 @@ export async function generateMetadata({ params }) {
   return p
     ? {
         title: p.name,
+        alternates: { canonical: `/products/${encodeURIComponent(p.slug)}` },
         description:
           `${p.name} from Tata Tex. ${p.description || 'Contact us for prices and wholesale quotations.'}`.slice(
             0,

@@ -6,6 +6,7 @@ import ProductCard from '@/components/ProductCard';
 import HomeHero from '@/components/HomeHero';
 import { getHomeSlides } from '@/lib/home-content';
 export const dynamic = 'force-dynamic';
+export const metadata = { alternates: { canonical: '/' } };
 export default async function Home() {
   const [categories, products, slides] = await Promise.all([
     getCategories(),

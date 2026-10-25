@@ -1,7 +1,9 @@
 import './globals.css';
 import LoadingScreen from '@/components/LoadingScreen';
+import { siteUrl } from '@/lib/site';
 
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Tata Tex – Uniforms and Accessories',
   description:
     'Uniforms and accessories for schools, workplaces and teams. Retail and wholesale enquiries.',
