@@ -42,7 +42,8 @@ async function sendEmail(id, e) {
       `New website enquiry #${id}\n\nType: ${e.type}\nProduct: ${e.product}\nName: ${e.name}\nContact: ${e.contact}\n` +
       `Company: ${e.company || '-'}\nQuantity: ${e.qty || '-'}\n\nMessage:\n${e.message}\n`,
   };
-  if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e.contact)) mail.replyTo = e.contact;
+  const customerEmail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e.contact) ? e.contact : null;
+  if (customerEmail) mail.replyTo = customerEmail;
   if (!SMTP_HOST || !MAIL_TO) {
     console.info(`Enquiry ${id} stored. Email is not configured.`);
     return;
@@ -56,9 +57,28 @@ async function sendEmail(id, e) {
     secure: Number(SMTP_PORT) === 465,
     auth: SMTP_USER ? { user: SMTP_USER, pass: SMTP_PASS } : undefined,
   });
-  await transport.sendMail(mail);
-  unwrap(await createAdminClient().from('enquiries').update({ emailed: true }).eq('id', id));
-  console.log(`Enquiry ${id} emailed to ${MAIL_TO}`);
+  await Promise.all([
+    (async () => {
+      await transport.sendMail(mail);
+      unwrap(await createAdminClient().from('enquiries').update({ emailed: true }).eq('id', id));
+      console.log(`Enquiry ${id} emailed to ${MAIL_TO}`);
+    })().catch((err) => console.error(`Enquiry ${id} saved but email failed:`, err.message)),
+    customerEmail
+      ? transport
+          .sendMail({
+            from: mail.from,
+            to: customerEmail,
+            replyTo: MAIL_TO,
+            subject: `Tata Tex — Enquiry confirmation #${id}`,
+            text:
+              `Hello ${e.name},\n\nThank you for contacting Tata Tex. We have received your enquiry #${id} and our team will be in touch.\n\n` +
+              `Type: ${e.type}\nProduct: ${e.product}\nCompany: ${e.company || '-'}\nQuantity: ${e.qty || '-'}\n\nMessage:\n${e.message}\n\nTata Tex\n`,
+          })
+          .catch((err) =>
+            console.error(`Enquiry ${id} saved but customer confirmation failed:`, err.message),
+          )
+      : Promise.resolve(),
+  ]);
 }
 
 export async function POST(req) {
