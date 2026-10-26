@@ -39,6 +39,7 @@ export default function Footer() {
           <h3>Contact</h3>
           <div className={styles.contacts}>
             <a href="tel:+94771151858">077 115 1858</a>
+            <a href="tel:+94112449672">011 2449672</a>
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </div>
           <div className={styles.hoursGroup}>
